@@ -350,16 +350,20 @@ table.tb td b{color:var(--black)}
 
   <div class="doc">
     <div class="toc"><div class="tt">Sommaire</div>
-      <a href="#p1">Partie 1 — Installation<span>12 étapes</span></a>
+      <a href="#p1">Partie 1 — Installation<span>13 étapes</span></a>
       <a href="#u1">Onglet Programme<span>2.1</span></a>
       <a href="#u2">Onglet Carnet<span>2.2</span></a>
-      <a href="#u3">Onglet Photos<span>2.3</span></a>
-      <a href="#u4">Onglet Fiches produit<span>2.4</span></a>
-      <a href="#u5">Onglet Diagnostic<span>2.5</span></a>
-      <a href="#u6">Sauvegarde<span>2.6</span></a>
-      <a href="#u7">Exports et santé<span>2.7</span></a>
-      <a href="#u8">Routine conseillée<span>2.8</span></a>
-      <a href="#u9">Dépannage<span>2.9</span></a>
+      <a href="#u2b">Analyse d’une séance<span>2.3</span></a>
+      <a href="#u2c">Onglet Bilan<span>2.4</span></a>
+      <a href="#u3">Onglet Photos<span>2.5</span></a>
+      <a href="#u4">Onglet Fiches produit<span>2.6</span></a>
+      <a href="#u5">Onglet Diagnostic<span>2.7</span></a>
+      <a href="#u6">Sauvegarde et fichiers<span>2.8</span></a>
+      <a href="#u7">Exports et santé<span>2.9</span></a>
+      <a href="#u8">Routine conseillée<span>2.10</span></a>
+      <a href="#u9">Dépannage<span>2.11</span></a>
+      <a href="#u10">Verrouillage et chiffrement<span>2.12</span></a>
+      <a href="#u11">Particularités de Bluefy<span>2.13</span></a>
     </div>
 
     <div class="box d"><b>Les fichiers de la solution.</b>
@@ -368,7 +372,7 @@ table.tb td b{color:var(--black)}
       <b>guide-machines-philippe.pdf</b> — la version imprimable du guide des machines, facultative.</div>
 
     <h2 class="part" id="p1">Partie 1 — Installation
-      <small>Compte une trentaine de minutes, une seule fois. Les étapes 1 à 8 sont indispensables, les suivantes améliorent le confort.</small></h2>
+      <small>Compte une trentaine de minutes, une seule fois. Les étapes 1 à 9 sont indispensables, les suivantes améliorent le confort.</small></h2>
 
     <div class="box w"><b>Pourquoi cette notice ne dit pas « ouvre le fichier ».</b>
       Depuis iOS 18, Safari refuse d’ouvrir un fichier HTML enregistré sur l’iPhone : l’app Fichiers
@@ -380,7 +384,7 @@ table.tb td b{color:var(--black)}
       le programme, les schémas et le code. Tes séances, tes photos et ta fréquence cardiaque restent
       dans la mémoire de ton navigateur et dans tes sauvegardes — elles ne partent jamais sur le réseau.
       Si tu préfères la discrétion, donne au dépôt un nom quelconque : l’adresse ne sera pas devinable.</div>
-    <div class="step" data-n="01"><div class="sh">Comprendre pourquoi on héberge la page</div><p>Depuis iOS 18, Safari refuse d’ouvrir un fichier HTML local. L’app Fichiers l’affiche dans <b>Coup d’œil</b>, un aperçu qui montre la page mais <b>n’exécute pas le JavaScript</b> : les onglets, le carnet et le capteur ne peuvent pas fonctionner. Ce n’est pas contournable.</p><p>La page doit donc être servie en <b>https</b>. C’est gratuit, ça se fait depuis l’iPhone, et ça règle d’un coup cinq problèmes : ouverture dans Safari, ouverture dans Bluefy, <b>contexte sécurisé exigé par le Bluetooth web</b>, ajout à l’écran d’accueil, et téléchargement des sauvegardes.</p></div><div class="step" data-n="02"><div class="sh">Créer un compte GitHub</div><p>Dans Safari, va sur <span class='kbd'>github.com</span> → <b>Sign up</b>. Adresse mail, mot de passe, nom d’utilisateur. Compte gratuit, aucune carte bancaire.</p><p>Note ton nom d’utilisateur : il fera partie de l’adresse de ton application.</p></div><div class="step" data-n="03"><div class="sh">Créer le dépôt</div><p>Bouton <b>+</b> en haut à droite → <b>New repository</b>. Nom : <span class='kbd'>fp-taverny</span>. Laisse <b>Public</b> coché — c’est nécessaire pour l’hébergement gratuit. Puis <b>Create repository</b>.</p></div><div class="step" data-n="04"><div class="sh">Téléverser les deux fichiers</div><p>Dans le dépôt : <b>Add file</b> → <b>Upload files</b> → <b>choose your files</b> → app <b>Fichiers</b> → sélectionne <b>fitness-park-taverny.html</b> et <b>ouvrir-application.html</b>.</p><p>Descends en bas de page et appuie sur <b>Commit changes</b>.</p></div><div class="step" data-n="05"><div class="sh">Activer l’hébergement</div><p>Onglet <b>Settings</b> du dépôt → menu de gauche <b>Pages</b> → section <b>Build and deployment</b> → sous <b>Branch</b>, choisis <span class='kbd'>main</span> puis <b>Save</b>.</p><p>Attends une à deux minutes, puis recharge la page Settings → Pages : l’adresse s’affiche. Elle ressemble à <span class='kbd'>https://TON-NOM.github.io/fp-taverny/</span>.</p></div><div class="step" data-n="06"><div class="sh">Ouvrir l’application dans Safari</div><p>Dans la barre d’adresse, tape ton adresse suivie du nom du fichier : <span class='kbd'>https://TON-NOM.github.io/fp-taverny/fitness-park-taverny.html</span></p><p>Cette fois tout doit répondre. Vérifie les cinq onglets, ouvre une fiche d’exercice, reviens en arrière. Mets la page en <b>favori</b>.</p></div><div class="step" data-n="07"><div class="sh">Lancer le diagnostic dans Safari</div><p>Onglet <b>Diagnostic</b>. <b>Contexte sécurisé</b> doit être vert — c’est le bénéfice direct de l’hébergement. <b>Bluetooth web</b> restera absent : c’est normal, Safari ne le propose pas.</p><p>Appuie sur <b>Tester un téléchargement</b> et vérifie que le fichier arrive dans Fichiers → Téléchargements.</p></div><div class="step" data-n="08"><div class="sh">Ouvrir la même adresse dans Bluefy</div><p>Copie l’adresse depuis Safari, ouvre <b>Bluefy</b>, colle-la dans sa barre d’adresse. Mets la page en <b>favori</b> dans Bluefy : ce sera ton accès quotidien.</p><p>Relance le <b>Diagnostic</b> : <b>Navigateur</b> doit indiquer Bluefy et <b>Bluetooth web</b> passer à « disponible ».</p></div><div class="step" data-n="09"><div class="sh">Le lanceur sur l’écran d’accueil</div><p>Dans Safari, ouvre <span class='kbd'>…/ouvrir-application.html</span>. Renseigne une fois l’adresse complète de l’application dans le champ du haut : elle est mémorisée.</p><p>Puis <b>Partager</b> → <b>Sur l’écran d’accueil</b>, nomme-la <span class='kbd'>Fitness Park</span>. À chaque appui, elle te demandera avec quel navigateur ouvrir.</p></div><div class="step" data-n="10"><div class="sh">Régler la destination des téléchargements</div><p><b>Réglages</b> → <b>Safari</b> → <b>Téléchargements</b> → <b>iCloud Drive</b>. Les sauvegardes automatiques du carnet y atterriront directement.</p></div><div class="step" data-n="11"><div class="sh">Appairer le Polar Verity Sense</div><p>Allume le capteur, place-le sur l’avant-bras, et vérifie qu’il n’est <b>pas déjà connecté</b> à une autre application : un capteur BLE ne se partage pas toujours.</p><p>Dans <b>Bluefy</b>, ouvre une séance du carnet, bloc <b>Fréquence cardiaque</b> → <b>Connecter le capteur</b> → choisis <span class='kbd'>Polar Sense</span>. La FC s’affiche en direct.</p></div><div class="step" data-n="12"><div class="sh">Ajouter tes premières photos</div><p>Onglet <b>Photos</b>. Deux emplacements par machine : la machine avec son environnement, et l’autocollant du fabricant. Elles apparaissent aussitôt sous les schémas du programme.</p><p>Six machines par séance suffisent — inutile de tout faire d’un coup.</p></div>
+    <div class="step" data-n="01"><div class="sh">Comprendre pourquoi on héberge la page</div><p>Depuis iOS 18, Safari refuse d’ouvrir un fichier HTML local. L’app Fichiers l’affiche dans <b>Coup d’œil</b>, un aperçu qui montre la page mais <b>n’exécute pas le JavaScript</b> : les onglets, le carnet et le capteur ne peuvent pas fonctionner. Ce n’est pas contournable.</p><p>La page doit donc être servie en <b>https</b>. C’est gratuit, ça se fait depuis l’iPhone, et ça règle d’un coup cinq problèmes : ouverture dans Safari, ouverture dans Bluefy, <b>contexte sécurisé exigé par le Bluetooth web</b>, ajout à l’écran d’accueil, et téléchargement des sauvegardes.</p></div><div class="step" data-n="02"><div class="sh">Créer un compte GitHub</div><p>Dans Safari, va sur <span class='kbd'>github.com</span> → <b>Sign up</b>. Adresse mail, mot de passe, nom d’utilisateur. Compte gratuit, aucune carte bancaire.</p><p>Note ton nom d’utilisateur : il fera partie de l’adresse de ton application.</p></div><div class="step" data-n="03"><div class="sh">Créer le dépôt</div><p>Bouton <b>+</b> en haut à droite → <b>New repository</b>. Nom : <span class='kbd'>fp-taverny</span>. Laisse <b>Public</b> coché — c’est nécessaire pour l’hébergement gratuit. Puis <b>Create repository</b>.</p></div><div class="step" data-n="04"><div class="sh">Téléverser les deux fichiers</div><p>Dans le dépôt : <b>Add file</b> → <b>Upload files</b> → <b>choose your files</b> → app <b>Fichiers</b> → sélectionne <b>fitness-park-taverny.html</b> et <b>ouvrir-application.html</b>.</p><p>Descends en bas de page et appuie sur <b>Commit changes</b>.</p></div><div class="step" data-n="05"><div class="sh">Activer l’hébergement</div><p>Onglet <b>Settings</b> du dépôt → menu de gauche <b>Pages</b> → section <b>Build and deployment</b> → sous <b>Branch</b>, choisis <span class='kbd'>main</span> puis <b>Save</b>.</p><p>Attends une à deux minutes, puis recharge la page Settings → Pages : l’adresse s’affiche. Elle ressemble à <span class='kbd'>https://TON-NOM.github.io/fp-taverny/</span>.</p></div><div class="step" data-n="06"><div class="sh">Ouvrir l’application dans Safari</div><p>Dans la barre d’adresse, tape ton adresse suivie du nom du fichier : <span class='kbd'>https://TON-NOM.github.io/fp-taverny/fitness-park-taverny.html</span></p><p>Cette fois tout doit répondre. Vérifie les cinq onglets, ouvre une fiche d’exercice, reviens en arrière. Mets la page en <b>favori</b>.</p></div><div class="step" data-n="07"><div class="sh">Déverrouiller l’application</div><p>Au premier chargement, un écran noir demande tes identifiants. Saisis ton adresse et ton mot de passe, et laisse cochée la case <b>Rester connecté sur cet appareil</b> pour ne pas les ressaisir à chaque fois.</p><p>À ce moment, tes données existantes sont reprises et <b>chiffrées</b>. Le mot de passe sert de clé : <b>sans lui, plus rien n’est récupérable</b>. Note-le ailleurs que dans ta tête, et exporte une sauvegarde dès ta première séance.</p></div><div class="step" data-n="08"><div class="sh">Lancer le diagnostic dans Safari</div><p>Onglet <b>Diagnostic</b>. <b>Contexte sécurisé</b> doit être vert — c’est le bénéfice direct de l’hébergement. <b>Bluetooth web</b> restera absent : c’est normal, Safari ne le propose pas.</p><p>Appuie sur <b>Tester un téléchargement</b> et vérifie que le fichier arrive dans Fichiers → Téléchargements.</p></div><div class="step" data-n="09"><div class="sh">Ouvrir la même adresse dans Bluefy</div><p>Bluefy a sa <b>propre mémoire</b> : les séances saisies dans Safari n’y apparaîtront pas. Si tu as déjà saisi quelque chose, exporte-le depuis Safari (Diagnostic → Afficher la sauvegarde → Copier) et recharge-le dans Bluefy (Diagnostic → Restaurer depuis le texte collé).</p><p>Copie l’adresse depuis Safari, ouvre <b>Bluefy</b>, colle-la dans sa barre d’adresse. Mets la page en <b>favori</b> dans Bluefy : ce sera ton accès quotidien.</p><p>Relance le <b>Diagnostic</b> : <b>Navigateur</b> doit indiquer Bluefy et <b>Bluetooth web</b> passer à « disponible ».</p></div><div class="step" data-n="10"><div class="sh">Le lanceur sur l’écran d’accueil</div><p>Dans Safari, ouvre <span class='kbd'>…/ouvrir-application.html</span>. Renseigne une fois l’adresse complète de l’application dans le champ du haut : elle est mémorisée.</p><p>Puis <b>Partager</b> → <b>Sur l’écran d’accueil</b>, nomme-la <span class='kbd'>Fitness Park</span>. À chaque appui, elle te demandera avec quel navigateur ouvrir.</p></div><div class="step" data-n="11"><div class="sh">Régler la destination des téléchargements</div><p><b>Réglages</b> → <b>Safari</b> → <b>Téléchargements</b> → <b>iCloud Drive</b>. Les sauvegardes automatiques du carnet y atterriront directement.</p></div><div class="step" data-n="12"><div class="sh">Appairer le Polar Verity Sense</div><p>Allume le capteur, place-le sur l’avant-bras, et vérifie qu’il n’est <b>pas déjà connecté</b> à une autre application : un capteur BLE ne se partage pas toujours.</p><p>Dans <b>Bluefy</b>, ouvre une séance du carnet, bloc <b>Fréquence cardiaque</b> → <b>Connecter le capteur</b> → choisis <span class='kbd'>Polar Sense</span>. La FC s’affiche en direct.</p></div><div class="step" data-n="13"><div class="sh">Ajouter tes premières photos</div><p>Onglet <b>Photos</b>. Deux emplacements par machine : la machine avec son environnement, et l’autocollant du fabricant. Elles apparaissent aussitôt sous les schémas du programme.</p><p>Six machines par séance suffisent — inutile de tout faire d’un coup.</p></div>
 
     <h2 class="part" id="p2">Partie 2 — Mode d’emploi
       <small>Ce que fait chaque onglet, comment s’en servir en séance, et quoi faire quand ça coince.</small></h2>
@@ -417,9 +421,40 @@ exercice d’abdos. C’est lui qui déclenche la règle du programme : trois s�
 +2,5 kg la semaine suivante.</p>
 <p class="t"><b>Le chronomètre de repos</b> est préréglé sur le temps de chaque exercice — 90, 75, 60 ou 45
 secondes. La barre reste visible en bas de l’écran et passe en orange pendant le décompte.</p>
+<p class="t"><b>Les horaires.</b> L’heure de début se pose seule à l’ouverture d’une séance, l’heure de fin
+à l’enregistrement. Un bandeau affiche la durée en continu, avec un bouton <b>Fin = maintenant</b>.</p>
+<p class="t"><b>Le raccourci depuis le programme.</b> Chaque ligne d’exercice porte un bouton
+<b>＋ carnet</b>, et chaque fiche un bouton <b>Saisir dans le carnet</b> : tu arrives directement sur le
+bon exercice, dans la séance du jour, qui est reprise si elle existe déjà.</p>
+<p class="t"><b>Le capteur cardiaque.</b> Dans Bluefy, le bloc Fréquence cardiaque propose
+<b>Connecter le capteur</b>, et <b>Voir tous les appareils</b> si le filtrage échoue. Une fois connecté,
+la fréquence s’affiche en direct, moyenne, maximum et minimum se remplissent seuls, et une
+<b>courbe est enregistrée à raison d’un point toutes les 5 secondes</b> — environ 3 Ko par séance.</p>
 <div class="box"><b>RIR — répétitions en réserve.</b> Le nombre de répétitions que tu aurais encore pu faire
 proprement. Ton programme demande de t’arrêter à 2. Les deux premières semaines, garde-en 3 ou 4 : la
 priorité est la technique.</div>
+
+<h3 class="chap" id="u2b">Analyse d’une séance</h3>
+<p class="t">Bouton <b>Analyser la séance</b>, à côté de l’enregistrement. Tant que la séance n’est pas
+validée, un bandeau noir affiche en <b>temps réel</b> la fréquence instantanée, le temps écoulé, les kilos
+cumulés et le nombre de séries — rafraîchi chaque seconde, les graphiques toutes les quinze secondes.
+Une fois la séance enregistrée, le bandeau disparaît et l’analyse porte sur la séance entière.</p>
+<p class="t">Elle contient six indicateurs de synthèse, les horaires avec la <b>densité en kg/min</b>,
+la comparaison chiffrée avec ta dernière séance du même jour, et <b>onze graphiques</b> : courbe cardiaque,
+temps par intensité, volume par exercice, charge moyenne, répétitions, volume série par série, RIR au fil
+des séries, cardio, gainage, abdos, et évolution du volume sur les sept dernières séances du même jour.</p>
+<div class="box d"><b>L’analyse n’est pas stockée, elle est recalculée.</b> Si tu corriges une série plus
+tard, l’analyse suit. Rien ne peut diverger de tes données réelles.</div>
+
+<h3 class="chap" id="u2c">Onglet Bilan</h3>
+<p class="t">La vue au-dessus de la séance : tous tes entraînements agrégés. Séances, tonnage total, heures
+cumulées, séances par semaine, semaines actives, séances avec capteur. Puis la régularité hebdomadaire,
+la répartition entre les cinq séances, le volume par semaine, la répartition haut du corps / jambes /
+abdos, le poids du corps, la fréquence cardiaque moyenne et le cardio par semaine.</p>
+<p class="t"><b>La table de progression par machine</b> est la partie à consulter chaque semaine :
+charge de départ, charge actuelle, écart en pourcentage pour chacune des 23 machines. Les lignes marquées
+<b>stagne</b> en orange signalent trois séances sans progression — c’est là que la règle des +2,5 kg doit
+s’appliquer. Piloter cela de mémoire sur 23 machines est illusoire ; cette table le fait pour toi.</p>
 
 <h3 class="chap" id="u3">Onglet Photos</h3>
 <p class="t">Les 23 machines, dans l’ordre où tu les rencontres au fil des séances. Deux emplacements par
@@ -448,13 +483,33 @@ téléchargement ne fonctionne pas, et recharger une sauvegarde.</p>
 <div class="box d"><b>La restauration fusionne, elle ne remplace jamais.</b> Les séances déjà présentes ne
 sont pas dupliquées. Tu peux recoller dix fois la même sauvegarde sans salir tes données.</div>
 
-<h3 class="chap" id="u6">Sauvegarde — la partie à ne pas négliger</h3>
+<h3 class="chap" id="u6">Sauvegarde — où sont les fichiers</h3>
 <p class="t">Safari efface le stockage local d’une page après <b>sept jours sans ouverture</b>. C’est une
 mesure anti-pistage d’Apple, pas un défaut de l’application. Tes séances ne sont donc jamais garanties
 dans la mémoire du navigateur.</p>
 <p class="t">L’application dépose automatiquement un fichier <span class="kbd">carnet-AAAA-MM-JJ.json</span>
 à chaque séance enregistrée. Chaque fichier contient <b>la base entière</b> : le plus récent suffit
 toujours à tout restaurer, les précédents peuvent être supprimés.</p>
+<p class="t"><b>Où atterrissent les fichiers.</b> Ils suivent le réglage du navigateur :
+<b>Réglages → Safari → Téléchargements</b>, réglé soit sur <i>Sur mon iPhone → Téléchargements</i>,
+soit sur <i>iCloud Drive → Téléchargements</i>. C’est l’étape 11 de l’installation.</p>
+<p class="t"><b>Comment les retrouver.</b> Ouvre l’app <b>Fichiers</b>, barre de recherche, tape
+<span class="kbd">carnet-</span> : toutes tes sauvegardes apparaissent, la plus récente en tête.
+Appui long sur un fichier pour le déplacer, le partager ou le supprimer.</p>
+<table class="tb">
+<tr><th>Fichier</th><th>Contenu</th></tr>
+<tr><td><span class="kbd">carnet-AAAA-MM-JJ.json</span></td><td>Sauvegarde automatique, déposée à chaque séance enregistrée. Contient <b>toute</b> la base : le plus récent suffit à tout restaurer.</td></tr>
+<tr><td><span class="kbd">carnet-archive-AAAA-MM-JJ.json</span></td><td>Archive créée quand tu allèges le carnet. Contient également la base entière.</td></tr>
+<tr><td><span class="kbd">mes-photos-machines.json</span></td><td>Tes photos de machines, séparées du carnet.</td></tr>
+<tr><td><span class="kbd">entrainements.csv</span></td><td>Une ligne par série, avec horaires, durée, cardio et fréquence cardiaque.</td></tr>
+<tr><td><span class="kbd">entrainements-strong.csv</span></td><td>Format d’import pour Strong et Hevy.</td></tr>
+<tr><td><span class="kbd">frequence-cardiaque.csv</span></td><td>La courbe, un point toutes les 5 secondes, horodaté.</td></tr>
+</table>
+<div class="box w"><b>Si les fichiers n’apparaissent nulle part.</b> Bluefy gère ses propres
+téléchargements et peut ne pas écrire dans Fichiers. Lance <b>Tester un téléchargement</b> dans le
+Diagnostic : si le fichier test n’arrive pas, utilise la <b>sortie de secours</b> — afficher la sauvegarde,
+copier le texte, le coller dans une note. Le bouton <b>Restaurer depuis le texte collé</b> fait le
+chemin inverse.</div>
 <table class="tb">
 <tr><th>Fréquence</th><th>Ce que tu fais</th></tr>
 <tr><td><b>Chaque séance</b></td><td>Rien — la sauvegarde part toute seule si le téléchargement fonctionne.</td></tr>
@@ -502,9 +557,75 @@ coller dans une note.</dd>
 <dt>Un lien de fiche produit tombe en erreur.</dt>
 <dd>Signale-le-moi, je le corrige. Les fiches Hammer Strength ont été construites sur un motif d’URL
 vérifié, mais un fabricant peut réorganiser son site.</dd>
+<dt>Je ne retrouve pas mes fichiers de sauvegarde.</dt>
+<dd>App Fichiers, recherche <span class="kbd">carnet-</span>. Dans Bluefy, regarde d’abord sa propre liste
+de téléchargements, puis Fichiers → Sur mon iPhone → Bluefy. S’ils sont introuvables, le navigateur ne
+télécharge pas : utilise la sortie de secours du Diagnostic. Voir le chapitre 2.13.</dd>
+<dt>Mon carnet est vide alors que j’avais des séances.</dt>
+<dd>Tu as probablement changé de navigateur. Safari et Bluefy ont des mémoires séparées : recharge ta
+sauvegarde dans celui que tu utilises désormais.</dd>
+<dt>La page est entièrement blanche.</dt>
+<dd>Tu as ouvert le fichier local au lieu de l’adresse hébergée. Seul le https fait fonctionner
+le déverrouillage et le chiffrement.</dd>
 <dt>J’ai saisi une séance dans le mauvais jour.</dt>
 <dd>Ouvre-la depuis l’historique, note les valeurs, supprime-la, ressaisis-la dans le bon jour.</dd>
 </dl>
+
+<h3 class="chap" id="u10">Verrouillage et chiffrement</h3>
+<p class="t">L’application s’ouvre sur un écran noir demandant identifiant et mot de passe. Tes identifiants
+ne figurent pas dans le fichier : seule leur empreinte y est stockée, ce qui évite d’exposer ton adresse
+dans un dépôt public.</p>
+<p class="t">Ton mot de passe sert aussi de <b>clé de chiffrement</b>. Séances, courbes cardiaques et photos
+sont chiffrées en AES-256 avant d’être écrites : le stockage du navigateur ne contient plus rien de lisible.
+Le bouton <b>Verrouiller</b>, en bout de barre de navigation, efface la clé et recharge la page.</p>
+<div class="box w"><b>Les deux limites à connaître.</b>
+Avec <i>Rester connecté</i> activé, la clé est conservée sur l’appareil : quelqu’un disposant de ton iPhone
+déverrouillé pourrait rouvrir l’application. Décoche la case pour une protection réelle, au prix d’une
+saisie à chaque ouverture.<br><br>
+Surtout : <b>sans ton mot de passe, tes données sont définitivement perdues.</b> Aucune récupération n’est
+possible — c’est le principe même du chiffrement. Note-le ailleurs, et exporte régulièrement ta sauvegarde
+<span class="kbd">.json</span>, qui reste volontairement <b>en clair</b> pour rester restaurable.</div>
+
+<h3 class="chap" id="u11">Particularités de Bluefy</h3>
+<p class="t">Bluefy est le navigateur qui donne accès au capteur cardiaque, et c’est la seule raison de
+l’utiliser. Il repose sur WebKit comme Safari : l’affichage, les polices et le fonctionnement de
+l’application sont identiques. Ce qui diffère, ce sont les fonctions périphériques — téléchargements,
+partage, écran d’accueil — que chaque navigateur implémente à sa façon.</p>
+
+<div class="box w"><b>La conséquence la plus importante : deux mémoires séparées.</b>
+Les séances saisies dans Bluefy n’existent pas dans Safari, et inversement. Si tu utilises Bluefy pour
+t’entraîner, <b>c’est là que vivent tes données</b> — donc c’est depuis Bluefy que tu dois exporter et
+sauvegarder. Ouvrir l’application dans Safari te montrerait un carnet vide ou périmé.</div>
+
+<p class="t"><b>Où va le fichier .json dans Bluefy ?</b> Bluefy dispose de sa propre section de
+téléchargements, distincte de celle de Safari. Le comportement exact n’est pas documenté par l’éditeur —
+je préfère te donner la méthode de vérification plutôt qu’une affirmation. Après un
+<b>Tester un téléchargement</b> dans l’onglet Diagnostic, cherche le fichier
+<span class="kbd">test-telechargement.txt</span> dans cet ordre :</p>
+<ol style="margin:0 0 14px 19px;font-size:14.5px;line-height:1.7;color:var(--graph)">
+  <li>La <b>liste des téléchargements de Bluefy</b>, via son propre menu.</li>
+  <li>App <b>Fichiers</b> → <b>Sur mon iPhone</b> → dossier <b>Bluefy</b>, s’il apparaît.</li>
+  <li>App <b>Fichiers</b> → <b>Téléchargements</b>, sur l’iPhone ou dans iCloud Drive.</li>
+</ol>
+<p class="t">Si tu le trouves à l’étape 1 ou 2, tes sauvegardes suivront le même chemin : depuis Bluefy,
+appui long sur le fichier → <b>Partager</b> → <b>Enregistrer dans Fichiers</b> pour le déplacer vers
+iCloud Drive. Fais-le au moins une fois par semaine : un fichier resté dans le bac à sable de Bluefy
+disparaîtrait avec l’application si tu la désinstallais.</p>
+
+<div class="box"><b>Si tu ne le trouves nulle part</b>, Bluefy ne sait pas télécharger, et c’est sans
+gravité : l’onglet <b>Diagnostic</b> contient la sortie de secours. <b>Afficher la sauvegarde</b>,
+<b>Copier le texte affiché</b>, puis colle-le dans une note ou un mail que tu t’envoies. Le retour se fait
+par <b>Restaurer depuis le texte collé</b>, qui fusionne sans créer de doublon. C’est un chemin entièrement
+manuel, mais il fonctionne quoi qu’il arrive et ne dépend d’aucune fonction du navigateur.</div>
+
+<table class="tb">
+<tr><th>Point</th><th>Dans Bluefy</th></tr>
+<tr><td><b>Capteur cardiaque</b></td><td>Disponible — c’est sa raison d’être. Exige que la page soit en https.</td></tr>
+<tr><td><b>Écran d’accueil</b></td><td>Pas de fonction « Ajouter à l’écran d’accueil ». Utilise un favori dans Bluefy, et le lanceur pour y arriver.</td></tr>
+<tr><td><b>Règle des 7 jours</b></td><td>Sans raccourci d’écran d’accueil, tu perds l’exemption qui protège les données. La sauvegarde devient ta seule protection.</td></tr>
+<tr><td><b>Téléchargements</b></td><td>Gérés par l’application elle-même. À vérifier une fois, puis à déplacer vers iCloud Drive.</td></tr>
+<tr><td><b>Chiffrement</b></td><td>Fonctionne normalement en https. En http ou en fichier local, le verrou refuse de s’ouvrir.</td></tr>
+</table>
 
 <div class="box w" style="margin-top:22px"><b>Ce que cette application n’est pas.</b> Un programme indicatif
 et un outil de suivi. En cas de douleur persistante au genou, réduis d’abord l’amplitude, puis la charge,
@@ -513,7 +634,9 @@ ne remplace un avis médical.</div>
 
 
     <footer class="foot">
-      <div><b>Version documentée :</b> application unique en un seul fichier, quatre onglets plus diagnostic, carnet avec cardio, abdos et fréquence cardiaque, photos intégrées aux fiches.</div>
+      <div><b>Version documentée :</b> application unique, six onglets — Programme, Carnet, Bilan, Photos,
+        Fiches produit, Diagnostic — avec verrouillage et chiffrement, carnet complet (horaires, cardio,
+        abdos, fréquence cardiaque enregistrée en continu), analyse de séance en temps réel et bilan global.</div>
       <div>Document autonome : aucune connexion nécessaire pour le lire.</div>
     </footer>
   </div>
