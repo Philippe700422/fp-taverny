@@ -358,6 +358,10 @@ svg .lead{stroke:#C9CDD2;stroke-width:1.2;fill:none}
 .cico{--x:0}
 #hrcard .cico{color:var(--orange);font-size:18px}
 .hrlive{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;color:var(--orange);min-width:44px;text-align:right}
+.hrmsg{margin:0 12px 12px;background:var(--wash);border-left:5px solid var(--black);border-radius:0 3px 3px 0;
+       padding:11px 12px;font-size:13px;line-height:1.5;color:var(--graph)}
+.hrmsg.bad{background:#FFF4EA;border-left-color:var(--orange)}
+.hrmsg b{color:var(--black)}
 .hrnote{margin:0 12px 12px;background:var(--wash);border-left:5px solid var(--black);border-radius:0 3px 3px 0;
         padding:11px 12px;font-size:13px;line-height:1.5;color:var(--graph)}
 .hrnote b{color:var(--black)}
@@ -2547,7 +2551,11 @@ textarea{width:100%;border:1px solid var(--hair);border-radius:3px;padding:9px;f
           <span class="fld"><label>FC moyenne (bpm)</label><input inputmode="numeric" id="hrAvg" placeholder="—"></span>
           <span class="fld"><label>FC max (bpm)</label><input inputmode="numeric" id="hrMax" placeholder="—"></span>
         </div>
-        <div id="hrBle"><button class="btn" id="hrBtn" style="margin:0 12px 12px">Connecter le capteur</button></div>
+        <div id="hrBle">
+          <button class="btn" id="hrBtn" style="margin:0 12px 8px">Connecter le capteur</button>
+          <button class="btn" id="hrAll" style="margin:0 12px 12px">Voir tous les appareils</button>
+        </div>
+        <div class="hrmsg" id="hrMsg" style="display:none"></div>
       </div>
       <div id="c1"></div>
       <div id="ex"></div>
@@ -3596,17 +3604,54 @@ function hrParse(v){
   const f = v.getUint8(0);
   return (f & 1) ? v.getUint16(1, true) : v.getUint8(1);
 }
-async function hrConnect(){
+const HRS = "0000180d-0000-1000-8000-00805f9b34fb";   /* Heart Rate Service */
+const HRC = "00002a37-0000-1000-8000-00805f9b34fb";   /* Heart Rate Measurement */
+const BAT = "0000180f-0000-1000-8000-00805f9b34fb";
+
+function hrSay(t, bad){
+  const el = $("#hrMsg"); if (!el) return;
+  el.style.display = t ? "block" : "none";
+  el.className = "hrmsg" + (bad ? " bad" : "");
+  el.innerHTML = t;
+}
+
+async function hrConnect(all){
+  hrSay("Recherche du capteur…");
+  let dev;
   try {
-    hrDev = await navigator.bluetooth.requestDevice({
-      filters: [{ services: [0x180d] }, { namePrefix: "Polar" }],
-      optionalServices: [0x180d, 0x180f]
+    dev = await navigator.bluetooth.requestDevice(all
+      ? { acceptAllDevices: true, optionalServices: [HRS, BAT] }
+      : { filters: [{ services: [HRS] }, { namePrefix: "Polar" }], optionalServices: [HRS, BAT] });
+  } catch (e) {
+    const n = e && e.name ? e.name : "Erreur";
+    if (n === "NotFoundError") {
+      hrSay(all
+        ? "<b>Aucun appareil sélectionné.</b> Soit tu as fermé la liste, soit le capteur n’apparaît pas : "
+          + "vérifie qu’il est allumé (voyant clignotant) et qu’aucune autre application ne le retient."
+        : "<b>Capteur introuvable avec le filtre standard.</b> Appuie sur "
+          + "<b>Voir tous les appareils</b> juste en dessous : certains navigateurs n’acceptent pas le filtrage.", true);
+    } else if (n === "SecurityError") {
+      hrSay("<b>Refusé pour raison de sécurité.</b> La page doit être servie en <b>https</b>. "
+          + "Vérifie la ligne « Contexte sécurisé » dans l’onglet Diagnostic.", true);
+    } else if (n === "NotAllowedError") {
+      hrSay("<b>Autorisation Bluetooth refusée.</b> Réglages → Bluefy → active Bluetooth, puis réessaie.", true);
+    } else {
+      hrSay("<b>" + n + "</b> — " + (e && e.message ? e.message : "cause inconnue")
+          + ". Note ce message, il permet d’identifier le problème.", true);
+    }
+    return;
+  }
+
+  hrDev = dev;
+  try {
+    hrSay("Appareil choisi : <b>" + (dev.name || "sans nom") + "</b>. Connexion en cours…");
+    dev.addEventListener("gattserverdisconnected", () => {
+      $("#hrBtn").textContent = "Connecter le capteur";
+      hrSay("Capteur déconnecté. Appuie pour reconnecter.", true);
     });
-    hrDev.addEventListener("gattserverdisconnected", () => {
-      $("#hrBtn").textContent = "Connecter le capteur"; toast("Capteur déconnecté.");
-    });
-    const srv = await hrDev.gatt.connect();
-    const ch = await (await srv.getPrimaryService(0x180d)).getCharacteristic(0x2a37);
+    const srv = await dev.gatt.connect();
+    const svc = await srv.getPrimaryService(HRS);
+    const ch = await svc.getCharacteristic(HRC);
     await ch.startNotifications();
     ch.addEventListener("characteristicvaluechanged", e => {
       const bpm = hrParse(e.target.value);
@@ -3614,12 +3659,23 @@ async function hrConnect(){
       hrSum += bpm; hrN++; if (bpm > hrMax) hrMax = bpm;
       $("#hrLive").textContent = bpm;
       draft.hr.avg = String(Math.round(hrSum / hrN)); draft.hr.max = String(hrMax);
-      draft.hr.src = hrDev.name || "capteur BLE";
+      draft.hr.src = dev.name || "capteur BLE";
       $("#hrAvg").value = draft.hr.avg; $("#hrMax").value = draft.hr.max;
     });
-    $("#hrBtn").textContent = "Capteur connecté — " + (hrDev.name || "BLE");
-    toast("Capteur connecté. La FC se remplit toute seule.");
-  } catch (e) { toast("Connexion abandonnée."); }
+    $("#hrBtn").textContent = "Connecté — " + (dev.name || "capteur");
+    hrSay("<b>Capteur connecté.</b> La fréquence s’affiche en direct ; moyenne et maximum se remplissent seuls.");
+  } catch (e) {
+    const n = e && e.name ? e.name : "Erreur";
+    if (n === "NotFoundError") {
+      hrSay("<b>Cet appareil ne publie pas de service de fréquence cardiaque.</b> "
+          + "Tu as peut-être choisi un autre appareil dans la liste. Réessaie et sélectionne <b>Polar Sense</b>.", true);
+    } else if (n === "NetworkError") {
+      hrSay("<b>Connexion interrompue.</b> Le capteur est probablement déjà relié à une autre application "
+          + "(Polar Flow, une montre). Ferme-la, éteins puis rallume le capteur, et réessaie.", true);
+    } else {
+      hrSay("<b>" + n + "</b> — " + (e && e.message ? e.message : "cause inconnue"), true);
+    }
+  }
 }
 
 /* ── bloc abdos & gainage ── */
@@ -3784,7 +3840,10 @@ $("#abs").addEventListener("click", e => {
 ["hrAvg","hrMax"].forEach(id => $("#" + id).addEventListener("input", e => {
   draft.hr[id === "hrAvg" ? "avg" : "max"] = e.target.value; draft.hr.src = "saisie manuelle";
 }));
-if (navigator.bluetooth) { $("#hrBtn").addEventListener("click", hrConnect); }
+if (navigator.bluetooth) {
+  $("#hrBtn").addEventListener("click", () => hrConnect(false));
+  $("#hrAll").addEventListener("click", () => hrConnect(true));
+}
 else { $("#hrBle").innerHTML = `<div class="hrnote"><b>Lecture directe impossible dans Safari.</b>
   Apple n’implémente pas le Bluetooth web : aucune page ne peut lire ton capteur ici.
   Deux voies — enregistrer la séance dans <b>Polar Flow</b> et recopier FC moyenne et FC max ci-dessus,
