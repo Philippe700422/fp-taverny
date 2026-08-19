@@ -355,6 +355,12 @@ svg .lead{stroke:#C9CDD2;stroke-width:1.2;fill:none}
 .cgrid input{width:100%;min-height:44px;border:1px solid var(--hair);border-radius:3px;padding:0 9px;
              font-family:"IBM Plex Mono",monospace;font-size:15px;font-weight:600;background:var(--paper);color:var(--ink)}
 .cgrid .fld label{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cbtns{display:grid;gap:5px;justify-items:stretch}
+.exbtn{border:1px solid var(--black);border-radius:3px;background:var(--paper);padding:7px 10px;
+       font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;color:var(--black);
+       cursor:pointer;min-height:34px;white-space:nowrap}
+.exbtn.on{background:var(--orange);border-color:var(--orange);color:#fff}
+.exbtn.done{background:var(--wash);border-color:var(--hair);color:var(--muted)}
 .cico{--x:0}
 #hrcard .cico{color:var(--orange);font-size:18px}
 .hrlive{font-family:"IBM Plex Mono",monospace;font-size:22px;font-weight:600;color:var(--orange);min-width:44px;text-align:right}
@@ -408,6 +414,15 @@ svg .lead{stroke:#C9CDD2;stroke-width:1.2;fill:none}
      border-radius:3px;padding:0}
 .cap2{font-size:12.5px;line-height:1.5;color:var(--muted);margin-top:8px}
 .cap2 b{color:var(--black);font-family:"IBM Plex Mono",monospace}
+.exhr{border:1px solid var(--hair);border-radius:3px;padding:10px;margin-bottom:9px}
+.exh{font-size:13.5px;font-weight:600;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.cp{display:flex;flex-direction:column;align-items:center;gap:2px;border:1px solid var(--hair);
+    border-radius:3px;padding:6px 10px;font-size:8.5px;font-weight:600;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);min-width:62px}
+.cp b{font-family:"IBM Plex Mono",monospace;font-size:16px;font-weight:600;color:var(--ink);letter-spacing:0}
+.cp.hi b{color:var(--orange)} .cp.lo b{color:#1E7A3C}
+.mc{width:100%;height:66px;display:block;background:var(--wash);border:1px solid var(--hair);border-radius:3px}
 svg .ax{font-family:"IBM Plex Mono",monospace;font-size:7.5px;fill:#767C85}
 svg .axb{font-family:"IBM Plex Mono",monospace;font-size:8px;font-weight:600;fill:#0A0A0A}
 .hrc svg{height:auto}
@@ -422,6 +437,26 @@ svg .axb{font-family:"IBM Plex Mono",monospace;font-size:8px;font-weight:600;fil
 .zb{height:8px;background:var(--hair-2);border-radius:4px;overflow:hidden}
 .zb i{display:block;height:100%;background:var(--orange)}
 .zt{text-align:right;font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--black)}
+.hrmini{display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:20px;
+        background:#ffffff1a;border:1px solid #ffffff33;white-space:nowrap}
+.hrmini i{width:8px;height:8px;border-radius:50%;background:#8B9099;flex:0 0 auto}
+.hrmini b{font-family:"IBM Plex Mono",monospace;font-size:17px;font-weight:600;color:#fff;line-height:1}
+.hrmini span{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#B9BEC6}
+.hrmini.ok i{background:#4ADE80;box-shadow:0 0 0 0 #4ADE8099;animation:pulse 1.4s infinite}
+.hrmini.ok b{color:#fff}
+.hrmini.warn i{background:#FFB020} .hrmini.warn b{color:#FFD9A0}
+.hrmini.bad i{background:#FF5A3C} .hrmini.bad b{color:#FFB4A2}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #4ADE8099}70%{box-shadow:0 0 0 7px #4ADE8000}100%{box-shadow:0 0 0 0 #4ADE8000}}
+.tbar.run .hrmini{background:#00000026;border-color:#ffffff4d}
+.hrdot{display:flex;align-items:center;gap:9px;margin:0 12px 10px;padding:9px 11px;border-radius:3px;
+       background:var(--wash);border:1px solid var(--hair);font-size:12.5px;color:var(--graph)}
+.hrdot i{width:10px;height:10px;border-radius:50%;background:var(--hair);flex:0 0 auto}
+.hrdot.ok{background:#EDF7F0;border-color:#BFE0CA;color:#1E7A3C}
+.hrdot.ok i{background:#1E7A3C}
+.hrdot.warn{background:#FFF4EA;border-color:#F5CBA0;color:#8A4A12}
+.hrdot.warn i{background:var(--orange)}
+.hrdot.bad{background:#FFECE3;border-color:#F3B08A;color:#A33B0B}
+.hrdot.bad i{background:#D9480F}
 .hrmsg{margin:0 12px 12px;background:var(--wash);border-left:5px solid var(--black);border-radius:0 3px 3px 0;
        padding:11px 12px;font-size:13px;line-height:1.5;color:var(--graph)}
 .hrmsg.bad{background:#FFF4EA;border-left-color:var(--orange)}
@@ -526,6 +561,14 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
 .gbtn{width:100%;min-height:52px;border-radius:3px;background:var(--yellow);color:var(--black);
       font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .gbtn:active{opacity:.8}
+.glink{display:block;width:100%;margin-top:16px;background:none;border:0;color:#8B9099;
+       font-size:12.5px;text-decoration:underline;cursor:pointer;padding:6px}
+.galt{display:none;margin-top:14px;padding-top:14px;border-top:1px solid #2A2D32}
+.galt textarea{width:100%;min-height:76px;border:1px solid #2A2D32;border-radius:3px;background:#141414;
+               color:#fff;padding:9px;font-family:"IBM Plex Mono",monospace;font-size:11px;margin-bottom:16px}
+.galt textarea:focus,.galt input:focus{outline:0;border-color:var(--yellow)}
+.gbtn.alt{background:#2A2D32;color:#fff;margin-top:4px}
+.gmsg.good{background:#12321C;border-left-color:#4ADE80;color:#CDEBD6}
 .gmsg{display:none;margin-top:14px;background:#3A1E10;border-left:4px solid var(--orange);
       padding:11px 12px;font-size:13px;line-height:1.5;color:#F5D8C4;border-radius:0 3px 3px 0}
 .gfoot{margin-top:22px;font-size:11.5px;line-height:1.6;color:#767C85}
@@ -659,6 +702,14 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
         <span>Rester connecté sur cet appareil</span></label>
       <button class="gbtn" id="gGo">Déverrouiller</button>
       <div class="gmsg" id="gMsg"></div>
+      <button class="glink" id="gMore">Autre appareil, ou mot de passe oublié ?</button>
+      <div class="galt" id="gAlt">
+        <label class="gl">Coffre scellé <span>le contenu de db/keys.json, si cet appareil est nouveau</span></label>
+        <textarea id="gWrap" placeholder="coffre scellé"></textarea>
+        <label class="gl">Clé de secours <span>si tu as perdu le mot de passe</span></label>
+        <input id="gRec" placeholder="XXXXX-XXXXX-XXXXX-XXXXX" autocapitalize="characters" spellcheck="false">
+        <button class="gbtn alt" id="gRecGo">Ouvrir avec la clé de secours</button>
+      </div>
       <div class="gfoot">Tes données sont <b style="color:#B9BEC6">chiffrées</b> sur cet appareil avec une clé
         dérivée de ton mot de passe. Sans lui, elles sont illisibles — et irrécupérables. Pense à garder
         une sauvegarde exportée.</div>
@@ -2703,9 +2754,11 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
           <span class="fld"><label>FC max (bpm)</label><input inputmode="numeric" id="hrMax" placeholder="—"></span>
         </div>
         <div id="hrChart"></div>
+        <div class="hrdot" id="hrDot"><i></i>Capteur non connecté</div>
         <div id="hrBle">
           <button class="btn" id="hrBtn" style="margin:0 12px 8px">Connecter le capteur</button>
-          <button class="btn" id="hrAll" style="margin:0 12px 12px">Voir tous les appareils</button>
+          <button class="btn" id="hrAll" style="margin:0 12px 8px">Voir tous les appareils</button>
+          <button class="btn" id="hrOff" style="margin:0 12px 12px">Libérer le capteur</button>
         </div>
         <div class="hrmsg" id="hrMsg" style="display:none"></div>
       </div>
@@ -2721,8 +2774,10 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
         <button class="btn main" id="saveS">Enregistrer la séance</button>
         <button class="btn" id="delS">Supprimer cette séance</button>
       </div>
-      <div class="tbar" id="tbar"><span class="cd" id="cd">0:00</span>
-        <span class="lb">repos</span><button id="tstop">Démarrer / arrêter</button></div>
+      <div class="tbar" id="tbar">
+        <span class="hrmini" id="hrMini"><i></i><b id="hrMiniV">—</b><span>bpm</span></span>
+        <span class="cd" id="cd">0:00</span><span class="lb">repos</span>
+        <button id="tstop">Démarrer / arrêter</button></div>
     </section>
 
     <!-- ANALYSE -->
@@ -2850,6 +2905,19 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
         <button class="btn" id="syAll">Tout renvoyer depuis zéro</button>
         <button class="btn" id="syForget">Oublier le jeton sur cet appareil</button>
       </div>
+
+      <div class="sect2">Clé de secours</div>
+      <div class="hero" id="recState">Vérification…</div>
+      <div class="acts">
+        <button class="btn main" id="recGen">Générer une clé de secours</button>
+        <button class="btn" id="recShow">Afficher le coffre scellé</button>
+      </div>
+      <textarea id="recOut" readonly style="margin-top:12px;min-height:90px;display:none;
+        font-family:'IBM Plex Mono',monospace;font-size:12px"></textarea>
+      <div class="hero" style="margin-top:12px"><b>À quoi ça sert.</b> Tes données sont chiffrées par une
+        clé interne, elle-même enfermée dans deux coffres : l’un s’ouvre avec ton mot de passe, l’autre
+        avec la clé de secours. Si tu oublies le mot de passe, la clé de secours reste le seul moyen de
+        récupérer quoi que ce soit. <b>Imprime-la et range-la ailleurs que sur le téléphone.</b></div>
 
       <div class="sect2">Créer le dépôt et le jeton</div>
       <div class="recipe2">
@@ -3514,138 +3582,257 @@ body:not(.unlocked) main.sheet,body:not(.unlocked) .toast{display:none}
 
 <script>
 (function(){
-  var REF  = "7a2321262b8f2a7e852d07ab5f641f8eeb78da98976ffef9a0080f768016ea6d";
-  var SALT = "fp-taverny-2026-v1-salt";
-  var KSES = "fp-key-session", KDEV = "fp-key-device", KCHK = "fp-chk";
-  var LEGACY = ["fp-carnet-v1", "fp-photos-v2"];
-  var ENC = { "fp-carnet-v1": "fp-e-carnet", "fp-photos-v2": "fp-e-photos" };
-  var key = null;
-  window.__PLAIN = {};
+const SALT = "fp-taverny-2026-v1-salt", ITER = 150000;
+const REF  = "7a2321262b8f2a7e852d07ab5f641f8eeb78da98976ffef9a0080f768016ea6d";
+const KWRAP = "fp-wrap", KCHK = "fp-chk", KSES = "fp-key-session", KDEV = "fp-key-device";
+const LEGACY = ["fp-carnet-v1", "fp-photos-v2"];
+const ENC = { "fp-carnet-v1": "fp-e-carnet", "fp-photos-v2": "fp-e-photos" };
+let dk = null;                       /* clé de données, celle qui chiffre tout */
+window.__PLAIN = {};
 
-  function b64(buf){ var b = new Uint8Array(buf), s = "";
-    for (var i=0;i<b.length;i++) s += String.fromCharCode(b[i]);
-    return btoa(s); }
-  function unb64(str){ var s = atob(str), b = new Uint8Array(s.length);
-    for (var i=0;i<s.length;i++) b[i] = s.charCodeAt(i); return b; }
+/* ── utilitaires ───────────────────────────────────────── */
+function b64(buf){ const b = new Uint8Array(buf); let s = "";
+  for (let i=0;i<b.length;i++) s += String.fromCharCode(b[i]);
+  return btoa(s); }
+function unb64(str){ const s = atob(str), b = new Uint8Array(s.length);
+  for (let i=0;i<s.length;i++) b[i] = s.charCodeAt(i); return b; }
+async function sha(t){
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
+  return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,"0")).join(""); }
+async function kekFrom(secret, salt){
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name:"PBKDF2", salt:new TextEncoder().encode(salt || SALT), iterations:ITER, hash:"SHA-256" },
+    base, { name:"AES-GCM", length:256 }, false, ["encrypt","decrypt"]); }
+async function encW(key, txt){
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const c = await crypto.subtle.encrypt({name:"AES-GCM", iv:iv}, key, new TextEncoder().encode(txt));
+  return b64(iv) + "." + b64(c); }
+async function decW(key, blob){
+  const p = String(blob).split("."); if (p.length !== 2) throw new Error("format");
+  const c = await crypto.subtle.decrypt({name:"AES-GCM", iv:unb64(p[0])}, key, unb64(p[1]));
+  return new TextDecoder().decode(c); }
+const enc = t => encW(dk, t);
+const dec = b => decW(dk, b);
 
-  async function sha(txt){
-    var b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(txt));
-    return Array.from(new Uint8Array(b)).map(function(x){ return x.toString(16).padStart(2,"0"); }).join("");
+/* clé de secours : 25 caractères sans ambiguïté visuelle */
+const AL = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+function newRecovery(){
+  const b = crypto.getRandomValues(new Uint8Array(20));
+  let s = ""; for (let i=0;i<20;i++) s += AL[b[i] % 32];
+  return s.match(/.{1,5}/g).join("-"); }
+const cleanRec = s => String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "");
+
+function wrapGet(){ try { return JSON.parse(localStorage.getItem(KWRAP) || "null"); } catch(e){ return null; } }
+function wrapSet(w){ try { localStorage.setItem(KWRAP, JSON.stringify(w)); } catch(e){} }
+
+/* ── interface exposée aux modules ─────────────────────── */
+const pending = {};
+window.__vault = {
+  enc: t => enc(t), dec: b => dec(b), ready: () => !!dk,
+  get: k => window.__PLAIN[k] === undefined ? null : window.__PLAIN[k],
+  set: function(k, v){
+    window.__PLAIN[k] = v;
+    const target = ENC[k] || ("fp-e-" + k);
+    clearTimeout(pending[k]);
+    pending[k] = setTimeout(function(){
+      enc(v).then(b => { try { localStorage.setItem(target, b); } catch(e){} }).catch(()=>{});
+    }, 120);
+  },
+  remove: function(k){ delete window.__PLAIN[k];
+    try { localStorage.removeItem(ENC[k] || ("fp-e-" + k)); } catch(e){} },
+  /* le coffre scellé, à conserver hors de l'appareil */
+  wrap: () => JSON.stringify(wrapGet()),
+  hasRecovery: () => { const w = wrapGet(); return !!(w && w.r); },
+  makeRecovery: async function(){
+    const rk = newRecovery();
+    const kek = await kekFrom(cleanRec(rk), SALT + "|rec");
+    const w = wrapGet() || {};
+    w.v = 2; w.r = await encW(kek, b64(await crypto.subtle.exportKey("raw", dkRaw)));
+    wrapSet(w); pushKeys();
+    return rk; }
+};
+
+let dkRaw = null;   /* même clé, exportable, pour la mise sous enveloppe */
+
+async function makeDk(){
+  const raw = crypto.getRandomValues(new Uint8Array(32));
+  dkRaw = await crypto.subtle.importKey("raw", raw, {name:"AES-GCM"}, true, ["encrypt","decrypt"]);
+  dk = dkRaw;
+  return raw; }
+async function useDkRaw(raw){
+  dkRaw = await crypto.subtle.importKey("raw", raw, {name:"AES-GCM"}, true, ["encrypt","decrypt"]);
+  dk = dkRaw; }
+
+function say(t, bad){ const m = document.getElementById("gMsg");
+  m.style.display = "block"; m.className = "gmsg" + (bad === false ? " good" : ""); m.innerHTML = t; }
+
+/* ── ouverture ─────────────────────────────────────────── */
+async function openVault(){
+  const chk = localStorage.getItem(KCHK);
+  if (chk) { await dec(chk); } else { localStorage.setItem(KCHK, await enc("fp-ok")); }
+
+  for (let i=0;i<LEGACY.length;i++){
+    const k = LEGACY[i], blob = localStorage.getItem(ENC[k]);
+    if (blob) { try { window.__PLAIN[k] = await dec(blob); } catch(e){} }
+    const old = localStorage.getItem(k);
+    if (old) { window.__PLAIN[k] = old; localStorage.setItem(ENC[k], await enc(old)); localStorage.removeItem(k); }
   }
-  async function derive(pass){
-    var base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
-    return crypto.subtle.deriveKey(
-      { name:"PBKDF2", salt:new TextEncoder().encode(SALT), iterations:150000, hash:"SHA-256" },
-      base, { name:"AES-GCM", length:256 }, true, ["encrypt","decrypt"]);
+  const skip = {}; LEGACY.forEach(k => skip[ENC[k]] = 1);
+  for (let i=0;i<localStorage.length;i++){
+    const lk = localStorage.key(i);
+    if (!lk || lk.indexOf("fp-e-") !== 0 || skip[lk]) continue;
+    try { window.__PLAIN[lk.slice(5)] = await dec(localStorage.getItem(lk)); } catch(e){}
   }
-  async function enc(txt){
-    var iv = crypto.getRandomValues(new Uint8Array(12));
-    var c = await crypto.subtle.encrypt({name:"AES-GCM", iv:iv}, key, new TextEncoder().encode(txt));
-    return b64(iv) + "." + b64(c);
+  document.querySelectorAll("script.mjs").forEach(sc => {
+    const n = document.createElement("script"); n.textContent = sc.textContent; document.body.appendChild(n); });
+  document.body.classList.add("unlocked");
+  setTimeout(pushKeys, 3000);
+}
+
+/* migration depuis l'ancien chiffrement direct par mot de passe */
+async function migrate(kekP){
+  const items = [];
+  for (let i=0;i<localStorage.length;i++){
+    const k = localStorage.key(i);
+    if (k && k.indexOf("fp-e-") === 0) items.push(k);
   }
-  async function dec(blob){
-    var p = blob.split("."); if (p.length !== 2) throw new Error("format");
-    var c = await crypto.subtle.decrypt({name:"AES-GCM", iv:unb64(p[0])}, key, unb64(p[1]));
-    return new TextDecoder().decode(c);
-  }
+  const clair = {};
+  for (const k of items){ try { clair[k] = await decW(kekP, localStorage.getItem(k)); } catch(e){ return false; } }
+  const chk = localStorage.getItem(KCHK);
+  if (chk) { try { await decW(kekP, chk); } catch(e){ return false; } }
+  const raw = await makeDk();
+  for (const k of items) localStorage.setItem(k, await enc(clair[k]));
+  localStorage.setItem(KCHK, await enc("fp-ok"));
+  const w = { v:2, p: await encW(kekP, b64(raw)) };
+  wrapSet(w);
+  return true;
+}
 
-  /* interface utilisée par les modules */
-  var pending = {};
-  window.__vault = {
-    enc: function(t){ return enc(t); },
-    dec: function(b){ return dec(b); },
-    ready: function(){ return !!key; },
-    get: function(k){ return window.__PLAIN[k] === undefined ? null : window.__PLAIN[k]; },
-    set: function(k, v){
-      window.__PLAIN[k] = v;
-      var target = ENC[k] || ("fp-e-" + k);
-      clearTimeout(pending[k]);
-      pending[k] = setTimeout(function(){
-        enc(v).then(function(blob){ localStorage.setItem(target, blob); })
-              .catch(function(){});
-      }, 120);
-    },
-    remove: function(k){ delete window.__PLAIN[k];
-      try { localStorage.removeItem(ENC[k] || ("fp-e-" + k)); } catch(e){} }
-  };
-
-  async function openVault(){
-    /* contrôle de la clé, ou création du coffre au premier usage */
-    var chk = localStorage.getItem(KCHK);
-    if (chk) { await dec(chk); }                       /* lève une exception si la clé est fausse */
-    else localStorage.setItem(KCHK, await enc("fp-ok"));
-
-    for (var i=0;i<LEGACY.length;i++){
-      var k = LEGACY[i], blob = localStorage.getItem(ENC[k]);
-      if (blob) { try { window.__PLAIN[k] = await dec(blob); } catch(e){} }
-      var old = localStorage.getItem(k);                  /* reprise des données en clair */
-      if (old) { window.__PLAIN[k] = old;
-        localStorage.setItem(ENC[k], await enc(old));
-        localStorage.removeItem(k); }
-    }
-    /* les modules ne démarrent qu'ici */
-    document.querySelectorAll("script.mjs").forEach(function(sc){
-      var n = document.createElement("script"); n.textContent = sc.textContent;
-      document.body.appendChild(n);
-    });
-    document.body.classList.add("unlocked");
-  }
-
-  function say(t){ var m = document.getElementById("gMsg"); m.style.display = "block"; m.innerHTML = t; }
-
-  async function useKey(raw, remember){
-    key = await crypto.subtle.importKey("raw", unb64(raw), {name:"AES-GCM"}, true, ["encrypt","decrypt"]);
-    await openVault();
-    try {
-      sessionStorage.setItem(KSES, raw);
-      if (remember) localStorage.setItem(KDEV, raw); else localStorage.removeItem(KDEV);
-    } catch(e){}
-  }
-
-  async function tryLogin(){
-    var u = (document.getElementById("gUser").value || "").trim().toLowerCase();
-    var p = document.getElementById("gPass").value || "";
-    var rem = document.getElementById("gRem").checked;
-    if (!u || !p) { say("Renseigne les deux champs."); return; }
-    if (!window.crypto || !crypto.subtle) {
-      say("<b>Chiffrement indisponible ici.</b> La page doit être servie en <b>https</b> — "
-        + "ouverte en fichier local, le navigateur désactive ces fonctions."); return; }
-    document.getElementById("gGo").textContent = "Vérification…";
-    try {
-      if (await sha(u + "\n" + p) !== REF) {
-        say("Identifiant ou mot de passe incorrect.");
-        document.getElementById("gPass").value = "";
-        document.getElementById("gGo").textContent = "Déverrouiller"; return;
-      }
-      key = await derive(p);
-      var raw = b64(await crypto.subtle.exportKey("raw", key));
+async function unlockPassword(){
+  const u = (document.getElementById("gUser").value || "").trim().toLowerCase();
+  const p = document.getElementById("gPass").value || "";
+  const rem = document.getElementById("gRem").checked;
+  if (!u || !p) { say("Renseigne les deux champs."); return; }
+  if (!window.crypto || !crypto.subtle) {
+    say("<b>Chiffrement indisponible ici.</b> La page doit être servie en <b>https</b>."); return; }
+  document.getElementById("gGo").textContent = "Vérification…";
+  try {
+    if (await sha(u + "\n" + p) !== REF) {
+      say("Identifiant ou mot de passe incorrect.");
       document.getElementById("gPass").value = "";
-      await useKey(raw, rem);
-    } catch(e){
-      say("Déverrouillage impossible : " + (e.message || e.name));
-      document.getElementById("gGo").textContent = "Déverrouiller";
+      document.getElementById("gGo").textContent = "Déverrouiller"; return; }
+    const kekP = await kekFrom(p, SALT);
+    let w = wrapGet();
+
+    if (!w) {
+      const colle = (document.getElementById("gWrap").value || "").trim();
+      if (colle) { try { w = JSON.parse(colle); wrapSet(w); } catch(e){
+        say("Le coffre collé n’est pas lisible.", true); document.getElementById("gGo").textContent="Déverrouiller"; return; } }
     }
-  }
-
-  /* reprise automatique */
-  (async function(){
-    try {
-      var raw = localStorage.getItem(KDEV) || sessionStorage.getItem(KSES);
-      if (raw && window.crypto && crypto.subtle) {
-        document.getElementById("gRem").checked = !!localStorage.getItem(KDEV);
-        await useKey(raw, !!localStorage.getItem(KDEV));
+    if (w && w.p) {
+      await useDkRaw(unb64(await decW(kekP, w.p)));
+    } else {
+      const migre = await migrate(kekP);
+      if (!migre) {                       /* installation neuve */
+        const raw = await makeDk();
+        wrapSet({ v:2, p: await encW(kekP, b64(raw)) });
       }
-    } catch(e){}
-  })();
+    }
+    document.getElementById("gPass").value = "";
+    await finish(rem);
+  } catch(e){
+    say("Déverrouillage impossible : " + (e.message || e.name), true);
+    document.getElementById("gGo").textContent = "Déverrouiller"; }
+}
 
-  document.getElementById("gGo").addEventListener("click", tryLogin);
-  ["gUser","gPass"].forEach(function(id){
-    document.getElementById(id).addEventListener("keydown", function(e){ if (e.key === "Enter") tryLogin(); });
-  });
-  document.getElementById("lockBtn").addEventListener("click", function(){
-    try { sessionStorage.removeItem(KSES); localStorage.removeItem(KDEV); } catch(e){}
-    location.reload();
-  });
+async function unlockRecovery(){
+  const rk = cleanRec(document.getElementById("gRec").value);
+  const colle = (document.getElementById("gWrap").value || "").trim();
+  if (rk.length < 20) { say("La clé de secours compte 20 caractères.", true); return; }
+  let w = wrapGet();
+  if (!w && colle) { try { w = JSON.parse(colle); } catch(e){} }
+  if (!w || !w.r) { say("<b>Aucune clé de secours enregistrée sur cet appareil.</b> "
+     + "Colle d’abord le coffre scellé dans le champ prévu.", true); return; }
+  try {
+    const kek = await kekFrom(rk, SALT + "|rec");
+    await useDkRaw(unb64(await decW(kek, w.r)));
+    wrapSet(w);
+    say("<b>Clé de secours acceptée.</b> Pense à définir un nouveau mot de passe.", false);
+    await finish(true);
+  } catch(e){ say("Clé de secours refusée.", true); }
+}
+
+async function finish(rem){
+  try {
+    const raw = b64(await crypto.subtle.exportKey("raw", dkRaw));
+    sessionStorage.setItem(KSES, raw);
+    if (rem) localStorage.setItem(KDEV, raw); else localStorage.removeItem(KDEV);
+  } catch(e){}
+  await openVault();
+}
+
+/* dépose la version scellée du coffre sur le dépôt, si la synchro est configurée */
+function pushKeys(){
+  try {
+    const cfg = JSON.parse(window.__PLAIN["fp-sync-cfg"] || "null");
+    if (!cfg || !cfg.token || !cfg.owner || !cfg.repo) return;
+    const body = { message: "coffre", branch: cfg.branch || "main",
+                   content: btoa(JSON.stringify(wrapGet())) };
+    const url = "https://api.github.com/repos/" + cfg.owner + "/" + cfg.repo + "/contents/db/keys.json";
+    const local = wrapGet();
+    fetch(url + "?ref=" + (cfg.branch || "main"), { headers:{ "Authorization":"Bearer "+cfg.token,
+      "Accept":"application/vnd.github+json" } })
+      .then(r => r.ok ? r.json() : null)
+      .then(j => {
+        if (j && j.content) {
+          let dist = null;
+          try { dist = JSON.parse(decodeURIComponent(escape(atob(j.content.replace(/\n/g, ""))))); } catch(e){}
+          /* garde-fou : ne jamais écraser le coffre d'une autre clé de données */
+          if (dist && dist.p && local && dist.p !== local.p) {
+            window.__wrapConflict = true;
+            const el = document.getElementById("syMsg");
+            if (el) { el.style.display = "block"; el.className = "symsg bad";
+              el.innerHTML = "<b>Coffre distant différent de celui de cet appareil.</b> "
+                + "Les données déjà présentes sur le dépôt ont été chiffrées avec une autre clé : "
+                + "elles deviendraient illisibles. Rien n’a été écrasé. "
+                + "Ouvre l’application avec le coffre du dépôt (bouton « Autre appareil » sur l’écran de "
+                + "verrouillage) avant de synchroniser."; }
+            return null;
+          }
+          if (j.sha) body.sha = j.sha;
+        }
+        return fetch(url, { method:"PUT", headers:{ "Authorization":"Bearer "+cfg.token,
+          "Accept":"application/vnd.github+json", "Content-Type":"application/json" },
+          body: JSON.stringify(body) });
+      })
+      .catch(()=>{});
+  } catch(e){}
+}
+window.__pushKeys = pushKeys;
+
+/* ── reprise automatique ───────────────────────────────── */
+(async function(){
+  try {
+    const raw = localStorage.getItem(KDEV) || sessionStorage.getItem(KSES);
+    if (raw && window.crypto && crypto.subtle) {
+      document.getElementById("gRem").checked = !!localStorage.getItem(KDEV);
+      await useDkRaw(unb64(raw));
+      await openVault();
+    }
+  } catch(e){}
+})();
+
+document.getElementById("gGo").addEventListener("click", unlockPassword);
+["gUser","gPass"].forEach(id => document.getElementById(id)
+  .addEventListener("keydown", e => { if (e.key === "Enter") unlockPassword(); }));
+document.getElementById("gMore").addEventListener("click", () => {
+  const p = document.getElementById("gAlt");
+  p.style.display = p.style.display === "block" ? "none" : "block"; });
+document.getElementById("gRecGo").addEventListener("click", unlockRecovery);
+document.getElementById("lockBtn").addEventListener("click", () => {
+  try { sessionStorage.removeItem(KSES); localStorage.removeItem(KDEV); } catch(e){}
+  location.reload(); });
 })();
 </script>
 <script>
@@ -3885,6 +4072,8 @@ async function drain(silent){
   const c = cfg();
   if (!c.owner || !c.repo || !c.token) { if (!silent) say("Configure d’abord le dépôt et le jeton.", "bad"); return; }
   if (!window.__vault.ready()) { if (!silent) say("Coffre verrouillé.", "bad"); return; }
+  if (window.__wrapConflict) { if (!silent) say("<b>Envoi suspendu.</b> Le coffre du dépôt ne correspond "
+    + "pas à celui de cet appareil — voir le message ci-dessus.", "bad"); return; }
   running = true;
   let done = 0, q = queue();
   try {
@@ -3930,7 +4119,9 @@ async function pullAll(){
       const f = await getFile("db/sessions/" + names[i]);
       if (!f) continue;
       try { out.push(JSON.parse(await window.__vault.dec(f.text))); }
-      catch(e){ throw new Error("déchiffrement impossible — mot de passe différent de celui du dépôt"); }
+      catch(e){ throw new Error("déchiffrement impossible. Cet appareil n’a pas la bonne clé : "
+        + "récupère le fichier <b>db/keys.json</b> du dépôt, verrouille l’application, puis colle-le "
+        + "dans « Autre appareil » sur l’écran de déverrouillage"); }
     }
     let added = 0;
     if (out.length && window.__importText) {
@@ -4021,6 +4212,33 @@ window.addEventListener("fp-save", () => {
 window.addEventListener("online", () => { if (cfg().token) drain(true); });
 setTimeout(() => { if (cfg().token && queue().length) drain(true); }, 4000);
 
+/* ── clé de secours ── */
+function recPaint(){
+  const el = $("#recState"); if (!el) return;
+  const has = window.__vault.hasRecovery();
+  el.innerHTML = has
+    ? "<b>Clé de secours active.</b> Elle a été générée sur cet appareil ou importée avec le coffre. "
+      + "Si tu l’as perdue, régénère-en une : l’ancienne cessera de fonctionner."
+    : "<b>Aucune clé de secours.</b> Si tu oublies ton mot de passe, tes données seront définitivement "
+      + "illisibles. Génère-la maintenant, cela prend dix secondes.";
+  $("#recGen").textContent = has ? "Régénérer une clé de secours" : "Générer une clé de secours";
+}
+if ($("#recGen")) $("#recGen").addEventListener("click", async () => {
+  const rk = await window.__vault.makeRecovery();
+  const o = $("#recOut"); o.style.display = "block";
+  o.value = "CLÉ DE SECOURS — à imprimer et à ranger hors du téléphone\n\n    " + rk
+    + "\n\nCOFFRE SCELLÉ — à conserver avec elle\n\n" + window.__vault.wrap();
+  recPaint();
+  if (window.__pushKeys) window.__pushKeys();
+  say("<b>Clé de secours créée.</b> Elle ne sera plus jamais réaffichée : recopie-la maintenant.");
+});
+if ($("#recShow")) $("#recShow").addEventListener("click", () => {
+  const o = $("#recOut"); o.style.display = "block";
+  o.value = window.__vault.wrap();
+  say("Coffre scellé affiché. Il ne contient rien de lisible sans ton mot de passe ou ta clé de secours.");
+});
+setTimeout(recPaint, 200);
+
 window.__sync = { drain: drain, pull: pullAll, queue: queue };
 })();
 </script>
@@ -4028,8 +4246,8 @@ window.__sync = { drain: drain, pull: pullAll, queue: queue };
 (function(){
 const ITEMS = [{"k": "chest-press", "t": "Développé couché machine", "g": "CHEST PRESS", "j": "J1"}, {"k": "incline-press", "t": "Développé incliné machine", "g": "INCLINE CHEST PRESS", "j": "J1"}, {"k": "shoulder-press", "t": "Développé épaules machine", "g": "SHOULDER PRESS", "j": "J1"}, {"k": "pec-deck", "t": "Écarté pectoraux", "g": "PEC DECK", "j": "J1"}, {"k": "lateral-raise", "t": "Élévations latérales machine", "g": "LATERAL RAISE", "j": "J1"}, {"k": "triceps-rope", "t": "Extension triceps corde", "g": "POULIE HAUTE", "j": "J1"}, {"k": "lat-pulldown", "t": "Tirage vertical", "g": "LAT PULLDOWN", "j": "J2"}, {"k": "seated-row", "t": "Rowing machine assis", "g": "SEATED ROW", "j": "J2"}, {"k": "low-row", "t": "Tirage horizontal poulie", "g": "POULIE BASSE", "j": "J2"}, {"k": "straight-arm", "t": "Pull-over à la poulie", "g": "POULIE HAUTE", "j": "J2"}, {"k": "rear-delt", "t": "Oiseau machine", "g": "REAR DELT · PEC DECK INVERSÉ", "j": "J2"}, {"k": "biceps-curl", "t": "Curl biceps machine", "g": "BICEPS CURL", "j": "J2"}, {"k": "leg-press", "t": "Presse à cuisses", "g": "LEG PRESS", "j": "J3"}, {"k": "seated-leg-curl", "t": "Leg curl assis", "g": "SEATED LEG CURL", "j": "J3"}, {"k": "glute-drive", "t": "Hip thrust machine", "g": "GLUTE DRIVE", "j": "J3"}, {"k": "abductor", "t": "Abducteurs", "g": "ABDUCTOR", "j": "J3"}, {"k": "adductor", "t": "Adducteurs", "g": "ADDUCTOR", "j": "J3"}, {"k": "seated-calf", "t": "Mollets assis", "g": "SEATED CALF RAISE", "j": "J3"}, {"k": "assisted-dip", "t": "Dips machine", "g": "TRICEPS DIP / ASSISTED DIP", "j": "J5"}, {"k": "lying-leg-curl", "t": "Leg curl allongé", "g": "LYING LEG CURL", "j": "J6"}, {"k": "back-extension", "t": "Extension lombaires", "g": "BACK EXTENSION · banc 45°", "j": "J6"}, {"k": "standing-calf", "t": "Mollets debout", "g": "STANDING CALF RAISE", "j": "J6"}, {"k": "ab-crunch", "t": "Crunch machine", "g": "ABDOMINAL CRUNCH", "j": "J6"}], THUMBS = {"chest-press": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"288\" y=\"112\" width=\"34\" height=\"94\" rx=\"2\"/><path class=\"stl\" d=\"M292 120H318\"/><path class=\"stl\" d=\"M292 131H318\"/><path class=\"stl\" d=\"M292 142H318\"/><path class=\"stl\" d=\"M292 153H318\"/><path class=\"stl\" d=\"M292 164H318\"/><path class=\"stl\" d=\"M292 175H318\"/><path class=\"stl\" d=\"M292 186H318\"/><path class=\"fr\" d=\"M305.0 112V66\"/>\n<path class=\"fr\" d=\"M96 210H300\"/><path class=\"fr\" d=\"M198 210V158\"/>\n<rect class=\"pad\" x=\"160\" y=\"146\" width=\"76\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M236 150L248 84L262 88L250 154Z\"/>\n<path class=\"mv\" d=\"M258 118L152 108\"/><path class=\"mv\" d=\"M152 92V132\"/>\n<path class=\"cb\" d=\"M262 114L296 112\"/>\n<circle class=\"fig h\" cx=\"246\" cy=\"70\" r=\"9\"/>\n<path class=\"fig\" d=\"M246 80L240 128\"/><path class=\"fig\" d=\"M242 96L192 100L154 110\"/>\n<path class=\"fig\" d=\"M240 130L200 166L196 204\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M138 112H104\"/>\n<text class=\"lbl\" x=\"322\" y=\"104\" text-anchor=\"end\">pile de poids</text><path class=\"lead\" d=\"M300 100L306 108\"/>\n<text class=\"lbl\" x=\"152\" y=\"74\" text-anchor=\"middle\">poignées ≈ mi-poitrine</text><path class=\"lead\" d=\"M152 78L152 90\"/>\n<text class=\"lbl\" x=\"276\" y=\"72\" text-anchor=\"start\">dossier vertical</text><path class=\"lead\" d=\"M272 76L258 90\"/>\n<text class=\"lbl\" x=\"120\" y=\"196\" text-anchor=\"start\">réglage du siège</text><path class=\"lead\" d=\"M186 192L196 168\"/><path class=\"lead\" d=\"M190 186L196 166\"/>\n</svg>", "incline-press": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"288\" y=\"112\" width=\"34\" height=\"94\" rx=\"2\"/><path class=\"stl\" d=\"M292 120H318\"/><path class=\"stl\" d=\"M292 131H318\"/><path class=\"stl\" d=\"M292 142H318\"/><path class=\"stl\" d=\"M292 153H318\"/><path class=\"stl\" d=\"M292 164H318\"/><path class=\"stl\" d=\"M292 175H318\"/><path class=\"stl\" d=\"M292 186H318\"/><path class=\"fr\" d=\"M305.0 112V66\"/>\n<path class=\"fr\" d=\"M96 210H300\"/><path class=\"fr\" d=\"M198 210V160\"/>\n<rect class=\"pad\" x=\"164\" y=\"148\" width=\"72\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M232 154L268 92L282 100L246 160Z\"/>\n<path class=\"mv\" d=\"M262 118L156 88\"/><path class=\"mv\" d=\"M156 72V112\"/>\n<path class=\"cb\" d=\"M268 116L296 112\"/>\n<circle class=\"fig h\" cx=\"258\" cy=\"80\" r=\"9\"/>\n<path class=\"fig\" d=\"M256 90L242 132\"/><path class=\"fig\" d=\"M250 100L196 92L158 84\"/>\n<path class=\"fig\" d=\"M242 134L200 166L196 204\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M142 96L112 78\"/>\n<text class=\"lbl\" x=\"300\" y=\"66\" text-anchor=\"end\">dossier incliné ≈ 45°</text><path class=\"lead\" d=\"M276 70L268 92\"/>\n<text class=\"lbl\" x=\"150\" y=\"54\" text-anchor=\"middle\">poignées hautes</text><path class=\"lead\" d=\"M152 58L156 70\"/>\n<text class=\"lbl\" x=\"112\" y=\"110\" text-anchor=\"middle\">poussée en diagonale</text>\n</svg>", "shoulder-press": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"288\" y=\"112\" width=\"34\" height=\"94\" rx=\"2\"/><path class=\"stl\" d=\"M292 120H318\"/><path class=\"stl\" d=\"M292 131H318\"/><path class=\"stl\" d=\"M292 142H318\"/><path class=\"stl\" d=\"M292 153H318\"/><path class=\"stl\" d=\"M292 164H318\"/><path class=\"stl\" d=\"M292 175H318\"/><path class=\"stl\" d=\"M292 186H318\"/><path class=\"fr\" d=\"M305.0 112V66\"/>\n<path class=\"fr\" d=\"M96 210H300\"/><path class=\"fr\" d=\"M200 210V160\"/>\n<rect class=\"pad\" x=\"166\" y=\"148\" width=\"72\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M238 152L242 74L256 74L252 156Z\"/>\n<path class=\"mv\" d=\"M244 84L176 66\"/><path class=\"mv\" d=\"M176 52V82\"/>\n<path class=\"cb\" d=\"M252 86L296 100\"/>\n<circle class=\"fig h\" cx=\"230\" cy=\"66\" r=\"9\"/>\n<path class=\"fig\" d=\"M230 76L228 130\"/><path class=\"fig\" d=\"M228 84L204 68L180 62\"/>\n<path class=\"fig\" d=\"M228 132L192 166L188 204\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M176 44V18\"/>\n<text class=\"lbl\" x=\"176\" y=\"14\" text-anchor=\"middle\">poussée verticale</text>\n<text class=\"lbl\" x=\"20\" y=\"52\" text-anchor=\"start\">poignées à hauteur d’épaules</text><path class=\"lead\" d=\"M132 48L168 60\"/>\n<text class=\"lbl\" x=\"336\" y=\"196\" text-anchor=\"end\">dossier vertical</text><path class=\"lead\" d=\"M300 192L254 140\"/>\n</svg>", "pec-deck": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect class=\"pad\" x=\"150\" y=\"150\" width=\"46\" height=\"34\" rx=\"4\"/>\n<rect class=\"pad\" x=\"150\" y=\"186\" width=\"46\" height=\"10\" rx=\"3\"/>\n<path class=\"fr\" d=\"M173 150V128\"/>\n<circle class=\"fig h\" cx=\"173\" cy=\"118\" r=\"10\"/>\n<path class=\"mv\" d=\"M158 148L96 84\"/><path class=\"mv\" d=\"M188 148L250 84\"/>\n<rect class=\"mv f\" x=\"82\" y=\"66\" width=\"14\" height=\"30\" rx=\"4\"/>\n<rect class=\"mv f\" x=\"250\" y=\"66\" width=\"14\" height=\"30\" rx=\"4\"/>\n<path class=\"fig\" d=\"M164 132L112 96\"/><path class=\"fig\" d=\"M182 132L234 96\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M74 106C104 140 140 150 164 152\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M272 106C242 140 206 150 182 152\"/>\n<text class=\"lbl\" x=\"173\" y=\"224\" text-anchor=\"middle\">vue de dessus · tu FERMES devant toi</text>\n<text class=\"lbl\" x=\"60\" y=\"52\" text-anchor=\"start\">coussinets / poignées</text>\n<text class=\"lbl\" x=\"300\" y=\"178\" text-anchor=\"end\">siège + dossier</text><path class=\"lead\" d=\"M258 182L198 190\"/>\n</svg>", "lateral-raise": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M110 210H230\"/><path class=\"fr\" d=\"M170 210V180\"/>\n<rect class=\"pad\" x=\"140\" y=\"168\" width=\"60\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M144 168V96\"/><path class=\"pad\" d=\"M196 168V96\"/>\n<circle class=\"fig h\" cx=\"170\" cy=\"62\" r=\"10\"/>\n<path class=\"fig\" d=\"M170 72V126\"/>\n<path class=\"fig\" d=\"M170 84L136 118\"/><path class=\"fig\" d=\"M170 84L204 118\"/>\n<rect class=\"mv f\" x=\"120\" y=\"110\" width=\"22\" height=\"14\" rx=\"4\"/>\n<rect class=\"mv f\" x=\"198\" y=\"110\" width=\"22\" height=\"14\" rx=\"4\"/>\n<path class=\"stop\" d=\"M96 84H244\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M118 104L104 86\"/><path class=\"ar\" marker-end=\"url(#arw)\" d=\"M222 104L236 86\"/>\n<text class=\"lbl\" x=\"336\" y=\"74\" text-anchor=\"end\">stop : hauteur d’épaule</text>\n<text class=\"lbl\" x=\"170\" y=\"226\" text-anchor=\"middle\">coussinets contre la face externe des bras</text>\n</svg>", "triceps-rope": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"262\" y=\"96\" width=\"36\" height=\"110\" rx=\"2\"/><path class=\"stl\" d=\"M266 104H294\"/><path class=\"stl\" d=\"M266 115H294\"/><path class=\"stl\" d=\"M266 126H294\"/><path class=\"stl\" d=\"M266 137H294\"/><path class=\"stl\" d=\"M266 148H294\"/><path class=\"stl\" d=\"M266 159H294\"/><path class=\"stl\" d=\"M266 170H294\"/><path class=\"stl\" d=\"M266 181H294\"/><path class=\"stl\" d=\"M266 192H294\"/><path class=\"fr\" d=\"M280.0 96V50\"/>\n<path class=\"fr\" d=\"M254 210V40H262\"/>\n<circle class=\"pu\" cx=\"254\" cy=\"48\" r=\"8\"/>\n<path class=\"cb\" d=\"M254 56V112\"/>\n<path class=\"mv\" d=\"M254 112L238 124\"/>\n<path class=\"mv\" d=\"M238 124L228 158\"/><path class=\"mv\" d=\"M238 124L250 158\"/>\n<circle class=\"fig h\" cx=\"180\" cy=\"66\" r=\"10\"/>\n<path class=\"fig\" d=\"M180 76L176 134\"/>\n<path class=\"fig\" d=\"M180 90L192 116L236 126\"/>\n<path class=\"fig\" d=\"M176 136L168 178L166 206\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M280 148V186\"/>\n<text class=\"lbl\" x=\"254\" y=\"32\" text-anchor=\"middle\">poulie HAUTE</text>\n<text class=\"lbl\" x=\"60\" y=\"112\" text-anchor=\"start\">coudes collés au corps</text><path class=\"lead\" d=\"M150 116L190 118\"/>\n<text class=\"lbl\" x=\"336\" y=\"206\" text-anchor=\"end\">extension complète vers le bas</text>\n</svg>", "lat-pulldown": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"24\" y=\"100\" width=\"34\" height=\"104\" rx=\"2\"/><path class=\"stl\" d=\"M28 108H54\"/><path class=\"stl\" d=\"M28 119H54\"/><path class=\"stl\" d=\"M28 130H54\"/><path class=\"stl\" d=\"M28 141H54\"/><path class=\"stl\" d=\"M28 152H54\"/><path class=\"stl\" d=\"M28 163H54\"/><path class=\"stl\" d=\"M28 174H54\"/><path class=\"stl\" d=\"M28 185H54\"/><path class=\"fr\" d=\"M41.0 100V54\"/>\n<path class=\"fr\" d=\"M74 100V44H244V210\"/><path class=\"fr\" d=\"M74 210V162\"/>\n<circle class=\"pu\" cx=\"200\" cy=\"52\" r=\"8\"/>\n<path class=\"cb\" d=\"M200 60V92\"/>\n<path class=\"mv\" d=\"M156 92H244\"/>\n<rect class=\"pad\" x=\"176\" y=\"150\" width=\"66\" height=\"12\" rx=\"3\"/>\n<path class=\"fr\" d=\"M208 210V162\"/>\n<rect class=\"pad\" x=\"158\" y=\"128\" width=\"16\" height=\"32\" rx=\"6\"/>\n<circle class=\"fig h\" cx=\"206\" cy=\"118\" r=\"9\"/>\n<path class=\"fig\" d=\"M206 128L200 148\"/>\n<path class=\"fig\" d=\"M204 124L196 96\"/><path class=\"fig\" d=\"M204 124L178 96\"/>\n<path class=\"fig\" d=\"M198 150L156 158L150 190\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M270 80V124\"/>\n<text class=\"lbl\" x=\"336\" y=\"176\" text-anchor=\"end\">tirer vers le haut</text><text class=\"lbl\" x=\"336\" y=\"190\" text-anchor=\"end\">de la poitrine</text><path class=\"lead\" d=\"M300 172L272 130\"/>\n<text class=\"lbl\" x=\"120\" y=\"120\" text-anchor=\"end\">cale-cuisses</text><path class=\"lead\" d=\"M126 124L156 136\"/>\n<text class=\"lbl\" x=\"200\" y=\"34\" text-anchor=\"middle\">barre suspendue</text>\n</svg>", "seated-row": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"52\" y=\"100\" width=\"34\" height=\"104\" rx=\"2\"/><path class=\"stl\" d=\"M56 108H82\"/><path class=\"stl\" d=\"M56 119H82\"/><path class=\"stl\" d=\"M56 130H82\"/><path class=\"stl\" d=\"M56 141H82\"/><path class=\"stl\" d=\"M56 152H82\"/><path class=\"stl\" d=\"M56 163H82\"/><path class=\"stl\" d=\"M56 174H82\"/><path class=\"stl\" d=\"M56 185H82\"/><path class=\"fr\" d=\"M69.0 100V54\"/>\n<path class=\"fr\" d=\"M46 210H290\"/><path class=\"fr\" d=\"M232 210V158\"/>\n<rect class=\"pad\" x=\"200\" y=\"146\" width=\"70\" height=\"12\" rx=\"3\"/>\n<rect class=\"pad\" x=\"178\" y=\"94\" width=\"14\" height=\"52\" rx=\"4\"/>\n<path class=\"mv\" d=\"M158 118H132\"/><circle class=\"mv f\" cx=\"152\" cy=\"118\" r=\"7\"/>\n<path class=\"cb\" d=\"M132 118H86\"/>\n<circle class=\"fig h\" cx=\"228\" cy=\"82\" r=\"9\"/>\n<path class=\"fig\" d=\"M228 92L222 138\"/><path class=\"fig\" d=\"M224 104L186 112L156 116\"/>\n<path class=\"fig\" d=\"M222 140L188 166L184 204\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M112 184L166 184\"/>\n<text class=\"lbl\" x=\"112\" y=\"204\" text-anchor=\"start\">tire vers le nombril, coudes vers l’arrière</text>\n<text class=\"lbl\" x=\"196\" y=\"80\" text-anchor=\"start\">appui-poitrine</text><path class=\"lead\" d=\"M194 84L186 92\"/>\n<text class=\"lbl\" x=\"69\" y=\"88\" text-anchor=\"middle\">pile de poids</text>\n</svg>", "low-row": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"24\" y=\"104\" width=\"30\" height=\"102\" rx=\"2\"/><path class=\"stl\" d=\"M28 112H50\"/><path class=\"stl\" d=\"M28 123H50\"/><path class=\"stl\" d=\"M28 134H50\"/><path class=\"stl\" d=\"M28 145H50\"/><path class=\"stl\" d=\"M28 156H50\"/><path class=\"stl\" d=\"M28 167H50\"/><path class=\"stl\" d=\"M28 178H50\"/><path class=\"stl\" d=\"M28 189H50\"/><path class=\"fr\" d=\"M39.0 104V58\"/>\n<path class=\"fr\" d=\"M20 210H300\"/>\n<circle class=\"pu\" cx=\"72\" cy=\"192\" r=\"9\"/>\n<path class=\"cb\" d=\"M80 190L152 152\"/>\n<circle class=\"mv f\" cx=\"160\" cy=\"150\" r=\"7\"/>\n<path class=\"pad\" d=\"M92 196L92 160L116 172L116 200Z\"/>\n<rect class=\"pad\" x=\"204\" y=\"152\" width=\"88\" height=\"12\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"250\" cy=\"90\" r=\"9\"/>\n<path class=\"fig\" d=\"M250 100L244 146\"/><path class=\"fig\" d=\"M246 112L200 132L166 148\"/>\n<path class=\"fig\" d=\"M244 148L172 168L120 180\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M176 178L214 178\"/>\n<text class=\"lbl\" x=\"64\" y=\"226\" text-anchor=\"middle\">poulie BASSE</text>\n<text class=\"lbl\" x=\"104\" y=\"146\" text-anchor=\"middle\">cale-pieds</text><path class=\"lead\" d=\"M104 150L104 160\"/>\n<text class=\"lbl\" x=\"196\" y=\"206\" text-anchor=\"start\">buste droit, pas de balancier</text>\n</svg>", "straight-arm": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"262\" y=\"96\" width=\"36\" height=\"110\" rx=\"2\"/><path class=\"stl\" d=\"M266 104H294\"/><path class=\"stl\" d=\"M266 115H294\"/><path class=\"stl\" d=\"M266 126H294\"/><path class=\"stl\" d=\"M266 137H294\"/><path class=\"stl\" d=\"M266 148H294\"/><path class=\"stl\" d=\"M266 159H294\"/><path class=\"stl\" d=\"M266 170H294\"/><path class=\"stl\" d=\"M266 181H294\"/><path class=\"stl\" d=\"M266 192H294\"/><path class=\"fr\" d=\"M280.0 96V50\"/>\n<path class=\"fr\" d=\"M254 210V40H262\"/>\n<circle class=\"pu\" cx=\"254\" cy=\"48\" r=\"8\"/>\n<path class=\"cb\" d=\"M254 56V80\"/>\n<path class=\"mv\" d=\"M226 80H254\"/>\n<circle class=\"fig h\" cx=\"168\" cy=\"70\" r=\"10\"/>\n<path class=\"fig\" d=\"M168 80L166 134\"/>\n<path class=\"fig\" d=\"M168 88L228 82\"/>\n<path class=\"fig\" d=\"M166 136L158 178L156 206\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M244 96C246 132 232 152 208 160\"/>\n<text class=\"lbl\" x=\"254\" y=\"32\" text-anchor=\"middle\">poulie HAUTE · barre droite</text>\n<text class=\"lbl\" x=\"104\" y=\"88\" text-anchor=\"start\">bras quasi tendus,</text><text class=\"lbl\" x=\"104\" y=\"100\" text-anchor=\"start\">coudes FIXES</text>\n<text class=\"lbl\" x=\"200\" y=\"180\" text-anchor=\"start\">arc de cercle vers les cuisses</text>\n</svg>", "rear-delt": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<rect class=\"pad\" x=\"150\" y=\"126\" width=\"46\" height=\"34\" rx=\"4\"/>\n<rect class=\"pad\" x=\"150\" y=\"114\" width=\"46\" height=\"10\" rx=\"3\"/>\n<path class=\"fr\" d=\"M173 160V178\"/>\n<circle class=\"fig h\" cx=\"173\" cy=\"188\" r=\"10\"/>\n<path class=\"mv\" d=\"M158 158L96 96\"/><path class=\"mv\" d=\"M188 158L250 96\"/>\n<rect class=\"mv f\" x=\"82\" y=\"78\" width=\"14\" height=\"30\" rx=\"4\"/>\n<rect class=\"mv f\" x=\"250\" y=\"78\" width=\"14\" height=\"30\" rx=\"4\"/>\n<path class=\"fig\" d=\"M164 176L118 148\"/><path class=\"fig\" d=\"M182 176L228 148\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M132 132C110 118 96 106 88 96\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M214 132C236 118 250 106 258 96\"/>\n<text class=\"lbl\" x=\"173\" y=\"224\" text-anchor=\"middle\">vue de dessus · tu ÉCARTES vers l’arrière</text>\n<text class=\"lbl\" x=\"300\" y=\"178\" text-anchor=\"end\">poitrine contre le coussin</text><path class=\"lead\" d=\"M250 174L196 138\"/>\n</svg>", "biceps-curl": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"56\" y=\"104\" width=\"32\" height=\"100\" rx=\"2\"/><path class=\"stl\" d=\"M60 112H84\"/><path class=\"stl\" d=\"M60 123H84\"/><path class=\"stl\" d=\"M60 134H84\"/><path class=\"stl\" d=\"M60 145H84\"/><path class=\"stl\" d=\"M60 156H84\"/><path class=\"stl\" d=\"M60 167H84\"/><path class=\"stl\" d=\"M60 178H84\"/><path class=\"stl\" d=\"M60 189H84\"/><path class=\"fr\" d=\"M72.0 104V58\"/>\n<path class=\"fr\" d=\"M50 210H286\"/><path class=\"fr\" d=\"M226 210V160\"/>\n<rect class=\"pad\" x=\"196\" y=\"148\" width=\"66\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M132 158L192 116L200 128L140 170Z\"/>\n<circle class=\"mv f\" cx=\"130\" cy=\"146\" r=\"7\"/>\n<path class=\"cb\" d=\"M124 146L88 132\"/>\n<circle class=\"fig h\" cx=\"224\" cy=\"96\" r=\"9\"/>\n<path class=\"fig\" d=\"M224 106L218 144\"/><path class=\"fig\" d=\"M220 116L172 140L134 148\"/>\n<path class=\"fig\" d=\"M218 146L184 168L180 204\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M112 128C126 108 142 100 158 98\"/>\n<text class=\"lbl\" x=\"108\" y=\"190\" text-anchor=\"start\">bras à plat sur le pupitre</text><path class=\"lead\" d=\"M168 186L172 150\"/>\n<text class=\"lbl\" x=\"30\" y=\"96\" text-anchor=\"start\">montée vers les épaules</text><path class=\"lead\" d=\"M122 100L140 112\"/>\n</svg>", "leg-press": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M40 210H300\"/>\n<path class=\"rail\" d=\"M74 190L262 74\"/>\n<path class=\"mv\" d=\"M204 56L268 96\"/>\n<rect class=\"mv f\" x=\"222\" y=\"66\" width=\"26\" height=\"18\" rx=\"3\" transform=\"rotate(32 235 75)\"/>\n<path class=\"pad\" d=\"M64 152L60 118L86 112L94 148Z\"/>\n<rect class=\"pad\" x=\"86\" y=\"146\" width=\"72\" height=\"12\" rx=\"3\"/>\n<path class=\"fr\" d=\"M120 210V158\"/>\n<circle class=\"fig h\" cx=\"66\" cy=\"104\" r=\"9\"/>\n<path class=\"fig\" d=\"M74 110L118 142\"/>\n<path class=\"fig\" d=\"M118 142L172 116\"/><path class=\"fig\" d=\"M172 116L216 88\"/>\n<path class=\"ang\" d=\"M158 132A28 28 0 0 1 186 130\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M212 128L252 104\"/>\n<text class=\"lbl\" x=\"150\" y=\"178\" text-anchor=\"start\">jamais sous 90° de flexion</text><path class=\"lead\" d=\"M174 172L174 134\"/>\n<text class=\"lbl\" x=\"258\" y=\"46\" text-anchor=\"end\">plateau : pieds HAUTS et LARGES</text>\n<text class=\"lbl\" x=\"30\" y=\"196\" text-anchor=\"start\">siège incliné</text><path class=\"lead\" d=\"M58 192L68 160\"/>\n</svg>", "seated-leg-curl": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"286\" y=\"110\" width=\"32\" height=\"96\" rx=\"2\"/><path class=\"stl\" d=\"M290 118H314\"/><path class=\"stl\" d=\"M290 129H314\"/><path class=\"stl\" d=\"M290 140H314\"/><path class=\"stl\" d=\"M290 151H314\"/><path class=\"stl\" d=\"M290 162H314\"/><path class=\"stl\" d=\"M290 173H314\"/><path class=\"stl\" d=\"M290 184H314\"/><path class=\"fr\" d=\"M302.0 110V64\"/>\n<path class=\"fr\" d=\"M96 210H296\"/><path class=\"fr\" d=\"M214 210V158\"/>\n<rect class=\"pad\" x=\"182\" y=\"146\" width=\"72\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M254 150L262 92L276 94L266 152Z\"/>\n<rect class=\"pad\" x=\"164\" y=\"128\" width=\"56\" height=\"12\" rx=\"4\"/>\n<path class=\"mv\" d=\"M172 160L124 168\"/>\n<circle class=\"mv f\" cx=\"120\" cy=\"168\" r=\"9\"/>\n<circle class=\"fig h\" cx=\"252\" cy=\"80\" r=\"9\"/>\n<path class=\"fig\" d=\"M252 90L242 140\"/>\n<path class=\"fig\" d=\"M242 142L176 146\"/><path class=\"fig\" d=\"M176 146L128 160\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M108 184C124 196 152 198 176 194\"/>\n<text class=\"lbl\" x=\"146\" y=\"116\" text-anchor=\"middle\">cale-cuisses</text><path class=\"lead\" d=\"M150 120L180 128\"/>\n<text class=\"lbl\" x=\"24\" y=\"138\" text-anchor=\"start\">rouleau juste au-dessus des talons</text><path class=\"lead\" d=\"M96 142L112 160\"/>\n<text class=\"lbl\" x=\"110\" y=\"226\" text-anchor=\"start\">talons vers le bas / sous le siège</text>\n</svg>", "glute-drive": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M40 210H300\"/>\n<path class=\"pad\" d=\"M52 158L96 122L106 134L62 170Z\"/>\n<rect class=\"pad\" x=\"146\" y=\"112\" width=\"62\" height=\"14\" rx=\"4\"/>\n<path class=\"fr\" d=\"M177 126V146\"/>\n<rect class=\"pad\" x=\"252\" y=\"150\" width=\"20\" height=\"58\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"76\" cy=\"118\" r=\"9\"/>\n<path class=\"fig\" d=\"M86 126L176 146\"/>\n<path class=\"fig\" d=\"M176 146L242 152\"/><path class=\"fig\" d=\"M242 152L254 190\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M177 100V70\"/>\n<text class=\"lbl\" x=\"177\" y=\"60\" text-anchor=\"middle\">extension complète des hanches</text>\n<text class=\"lbl\" x=\"120\" y=\"100\" text-anchor=\"end\">coussin de hanches</text><path class=\"lead\" d=\"M130 104L150 112\"/>\n<text class=\"lbl\" x=\"276\" y=\"140\" text-anchor=\"end\">plateau de pieds</text>\n<text class=\"lbl\" x=\"36\" y=\"196\" text-anchor=\"start\">haut du dos calé</text><path class=\"lead\" d=\"M72 192L78 166\"/>\n</svg>", "abductor": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M110 210H230\"/><path class=\"fr\" d=\"M170 210V180\"/>\n<rect class=\"pad\" x=\"138\" y=\"168\" width=\"64\" height=\"12\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"170\" cy=\"60\" r=\"10\"/>\n<path class=\"fig\" d=\"M170 70V128\"/>\n<path class=\"fig\" d=\"M166 128L134 172\"/><path class=\"fig\" d=\"M174 128L206 172\"/>\n<rect class=\"mv f\" x=\"112\" y=\"142\" width=\"16\" height=\"30\" rx=\"4\"/>\n<rect class=\"mv f\" x=\"212\" y=\"142\" width=\"16\" height=\"30\" rx=\"4\"/>\n<path class=\"lead\" d=\"M128 156H140\"/><path class=\"lead\" d=\"M200 156H212\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M104 158L74 158\"/><path class=\"ar\" marker-end=\"url(#arw)\" d=\"M236 158L266 158\"/>\n<text class=\"lbl\" x=\"170\" y=\"226\" text-anchor=\"middle\">vue de face · tu ÉCARTES</text>\n<text class=\"lbl\" x=\"48\" y=\"126\" text-anchor=\"start\">coussinets à l’EXTÉRIEUR</text><path class=\"lead\" d=\"M96 130L116 142\"/>\n</svg>", "adductor": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M110 210H230\"/><path class=\"fr\" d=\"M170 210V180\"/>\n<rect class=\"pad\" x=\"138\" y=\"168\" width=\"64\" height=\"12\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"170\" cy=\"60\" r=\"10\"/>\n<path class=\"fig\" d=\"M170 70V128\"/>\n<path class=\"fig\" d=\"M164 128L112 168\"/><path class=\"fig\" d=\"M176 128L228 168\"/>\n<rect class=\"mv f\" x=\"140\" y=\"142\" width=\"16\" height=\"30\" rx=\"4\"/>\n<rect class=\"mv f\" x=\"184\" y=\"142\" width=\"16\" height=\"30\" rx=\"4\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M136 132L162 132\"/><path class=\"ar\" marker-end=\"url(#arw)\" d=\"M204 132L178 132\"/>\n<text class=\"lbl\" x=\"170\" y=\"226\" text-anchor=\"middle\">vue de face · tu SERRES</text>\n<text class=\"lbl\" x=\"48\" y=\"126\" text-anchor=\"start\">coussinets à l’INTÉRIEUR</text><path class=\"lead\" d=\"M104 130L140 144\"/>\n</svg>", "seated-calf": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"286\" y=\"110\" width=\"32\" height=\"96\" rx=\"2\"/><path class=\"stl\" d=\"M290 118H314\"/><path class=\"stl\" d=\"M290 129H314\"/><path class=\"stl\" d=\"M290 140H314\"/><path class=\"stl\" d=\"M290 151H314\"/><path class=\"stl\" d=\"M290 162H314\"/><path class=\"stl\" d=\"M290 173H314\"/><path class=\"stl\" d=\"M290 184H314\"/><path class=\"fr\" d=\"M302.0 110V64\"/>\n<path class=\"fr\" d=\"M80 210H296\"/><path class=\"fr\" d=\"M228 210V156\"/>\n<rect class=\"pad\" x=\"196\" y=\"144\" width=\"66\" height=\"12\" rx=\"3\"/>\n<rect class=\"pad\" x=\"140\" y=\"120\" width=\"58\" height=\"14\" rx=\"4\"/>\n<path class=\"mv\" d=\"M169 120V96\"/><path class=\"mv\" d=\"M169 96H286\"/>\n<rect class=\"pad\" x=\"96\" y=\"184\" width=\"52\" height=\"14\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"234\" cy=\"96\" r=\"9\"/>\n<path class=\"fig\" d=\"M234 106L226 142\"/>\n<path class=\"fig\" d=\"M226 142L166 146\"/><path class=\"fig\" d=\"M166 146L126 182\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M104 172V148\"/>\n<text class=\"lbl\" x=\"24\" y=\"150\" text-anchor=\"start\">monte sur la pointe</text><path class=\"lead\" d=\"M96 146L106 152\"/>\n<text class=\"lbl\" x=\"122\" y=\"110\" text-anchor=\"end\">coussinets sur les cuisses</text><path class=\"lead\" d=\"M130 114L152 120\"/>\n<text class=\"lbl\" x=\"88\" y=\"226\" text-anchor=\"start\">talons dans le vide</text>\n</svg>", "assisted-dip": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"268\" y=\"104\" width=\"34\" height=\"104\" rx=\"2\"/><path class=\"stl\" d=\"M272 112H298\"/><path class=\"stl\" d=\"M272 123H298\"/><path class=\"stl\" d=\"M272 134H298\"/><path class=\"stl\" d=\"M272 145H298\"/><path class=\"stl\" d=\"M272 156H298\"/><path class=\"stl\" d=\"M272 167H298\"/><path class=\"stl\" d=\"M272 178H298\"/><path class=\"stl\" d=\"M272 189H298\"/><path class=\"fr\" d=\"M285.0 104V58\"/>\n<path class=\"fr\" d=\"M100 210V52H240V210\"/><path class=\"fr\" d=\"M100 52H240\"/>\n<path class=\"mv\" d=\"M124 128H160\"/><path class=\"mv\" d=\"M192 128H228\"/>\n<circle class=\"mv f\" cx=\"142\" cy=\"128\" r=\"6\"/><circle class=\"mv f\" cx=\"210\" cy=\"128\" r=\"6\"/>\n<rect class=\"pad\" x=\"150\" y=\"164\" width=\"56\" height=\"14\" rx=\"4\"/>\n<circle class=\"fig h\" cx=\"176\" cy=\"74\" r=\"10\"/>\n<path class=\"fig\" d=\"M176 84V140\"/>\n<path class=\"fig\" d=\"M176 90L142 124\"/><path class=\"fig\" d=\"M176 90L210 124\"/>\n<path class=\"fig\" d=\"M176 140L178 168\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" marker-start=\"url(#arw)\" d=\"M252 140V178\"/>\n<text class=\"lbl\" x=\"170\" y=\"226\" text-anchor=\"middle\">coussin d’assistance : plus de poids = plus d’aide</text>\n<text class=\"lbl\" x=\"112\" y=\"110\" text-anchor=\"end\">barres parallèles</text>\n</svg>", "lying-leg-curl": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"290\" y=\"120\" width=\"30\" height=\"88\" rx=\"2\"/><path class=\"stl\" d=\"M294 128H316\"/><path class=\"stl\" d=\"M294 139H316\"/><path class=\"stl\" d=\"M294 150H316\"/><path class=\"stl\" d=\"M294 161H316\"/><path class=\"stl\" d=\"M294 172H316\"/><path class=\"stl\" d=\"M294 183H316\"/><path class=\"stl\" d=\"M294 194H316\"/><path class=\"fr\" d=\"M305.0 120V74\"/>\n<path class=\"fr\" d=\"M56 210H300\"/><path class=\"fr\" d=\"M120 210V152\"/><path class=\"fr\" d=\"M216 210V152\"/>\n<rect class=\"pad\" x=\"70\" y=\"140\" width=\"164\" height=\"12\" rx=\"3\"/>\n<path class=\"mv\" d=\"M244 154L262 122\"/>\n<circle class=\"mv f\" cx=\"264\" cy=\"116\" r=\"9\"/>\n<circle class=\"fig h\" cx=\"72\" cy=\"126\" r=\"9\"/>\n<path class=\"fig\" d=\"M82 132L214 136\"/>\n<path class=\"fig\" d=\"M214 136L248 140\"/><path class=\"fig\" d=\"M248 140L266 126\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M282 148C288 128 282 112 268 102\"/>\n<text class=\"lbl\" x=\"150\" y=\"198\" text-anchor=\"middle\">allongé sur le VENTRE · hanches collées au banc</text>\n<text class=\"lbl\" x=\"232\" y=\"96\" text-anchor=\"end\">rouleau au-dessus des talons</text><path class=\"lead\" d=\"M250 100L260 110\"/>\n</svg>", "back-extension": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M60 210H260\"/><path class=\"fr\" d=\"M108 210L198 108\"/><path class=\"fr\" d=\"M150 210V162\"/>\n<path class=\"pad\" d=\"M176 138L206 108L220 120L190 150Z\"/>\n<circle class=\"pad f\" cx=\"130\" cy=\"176\" r=\"10\"/><circle class=\"pad f\" cx=\"152\" cy=\"190\" r=\"10\"/>\n<circle class=\"fig h\" cx=\"244\" cy=\"168\" r=\"10\"/>\n<path class=\"fig\" d=\"M238 160L192 128\"/>\n<path class=\"fig\" d=\"M192 128L146 178\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M266 156C276 130 268 108 250 96\"/>\n<text class=\"lbl\" x=\"150\" y=\"50\" text-anchor=\"start\">banc à 45°</text><path class=\"lead\" d=\"M160 56L182 96\"/>\n<text class=\"lbl\" x=\"20\" y=\"74\" text-anchor=\"start\">le haut du coussin</text><text class=\"lbl\" x=\"20\" y=\"88\" text-anchor=\"start\">JUSTE SOUS les hanches</text><path class=\"lead\" d=\"M120 84L178 120\"/>\n<text class=\"lbl\" x=\"320\" y=\"222\" text-anchor=\"end\">remonte à l’alignement, pas au-delà</text>\n</svg>", "standing-calf": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/>\n<path class=\"fr\" d=\"M104 210V56H236V210\"/><path class=\"fr\" d=\"M104 56H236\"/>\n<path class=\"mv\" d=\"M126 98H214\"/>\n<rect class=\"mv f\" x=\"126\" y=\"90\" width=\"26\" height=\"16\" rx=\"5\"/>\n<rect class=\"mv f\" x=\"188\" y=\"90\" width=\"26\" height=\"16\" rx=\"5\"/>\n<rect class=\"pad\" x=\"136\" y=\"184\" width=\"72\" height=\"14\" rx=\"3\"/>\n<circle class=\"fig h\" cx=\"170\" cy=\"72\" r=\"10\"/>\n<path class=\"fig\" d=\"M170 82V150\"/><path class=\"fig\" d=\"M170 150L166 182\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M256 150V116\"/>\n<text class=\"lbl\" x=\"336\" y=\"142\" text-anchor=\"end\">monte sur la pointe</text><path class=\"lead\" d=\"M300 138L258 132\"/>\n<text class=\"lbl\" x=\"96\" y=\"84\" text-anchor=\"end\">coussinets d’épaules</text>\n<text class=\"lbl\" x=\"128\" y=\"226\" text-anchor=\"start\">avant-pieds sur le bord</text>\n</svg>", "ab-crunch": "<svg class=\"\" viewBox=\"0 0 340 230\" xmlns=\"http://www.w3.org/2000/svg\">\n<path class=\"fl\" d=\"M12 210H328\"/><rect class=\"stk\" x=\"286\" y=\"112\" width=\"32\" height=\"94\" rx=\"2\"/><path class=\"stl\" d=\"M290 120H314\"/><path class=\"stl\" d=\"M290 131H314\"/><path class=\"stl\" d=\"M290 142H314\"/><path class=\"stl\" d=\"M290 153H314\"/><path class=\"stl\" d=\"M290 164H314\"/><path class=\"stl\" d=\"M290 175H314\"/><path class=\"stl\" d=\"M290 186H314\"/><path class=\"fr\" d=\"M302.0 112V66\"/>\n<path class=\"fr\" d=\"M96 210H296\"/><path class=\"fr\" d=\"M212 210V162\"/>\n<rect class=\"pad\" x=\"178\" y=\"150\" width=\"70\" height=\"12\" rx=\"3\"/>\n<path class=\"pad\" d=\"M244 154L252 104L266 106L256 156Z\"/>\n<rect class=\"mv f\" x=\"180\" y=\"90\" width=\"56\" height=\"14\" rx=\"4\"/>\n<path class=\"mv\" d=\"M208 104V126\"/><path class=\"mv\" d=\"M236 96H286\"/>\n<circle class=\"fig h\" cx=\"212\" cy=\"76\" r=\"10\"/>\n<path class=\"fig\" d=\"M212 86C206 108 210 130 224 146\"/>\n<path class=\"fig\" d=\"M224 148L182 166L178 196\"/>\n<path class=\"ar\" marker-end=\"url(#arw)\" d=\"M160 96C158 120 164 138 176 148\"/>\n<text class=\"lbl\" x=\"30\" y=\"140\" text-anchor=\"start\">enroule le buste</text><path class=\"lead\" d=\"M110 136L152 120\"/>\n<text class=\"lbl\" x=\"176\" y=\"72\" text-anchor=\"end\">coussin thoracique</text><path class=\"lead\" d=\"M182 76L196 90\"/>\n<text class=\"lbl\" x=\"120\" y=\"222\" text-anchor=\"start\">pivot au niveau du ventre</text>\n</svg>"}, KEY = "fp-photos-v2";
 let ph = {};
-try { const r = localStorage.getItem(KEY); if (r) ph = JSON.parse(r); } catch(e){}
-function persist(){ try { localStorage.setItem(KEY, JSON.stringify(ph)); document.getElementById("phwarn").style.display="none"; }
+try { const r = window.__vault.get(KEY); if (r) ph = JSON.parse(r); } catch(e){}
+function persist(){ try { window.__vault.set(KEY, JSON.stringify(ph)); document.getElementById("phwarn").style.display="none"; }
   catch(e){ document.getElementById("phwarn").style.display="block"; } }
 const shot = (k,s) => (ph[k]||{})[s] || null;
 
@@ -4170,6 +4388,7 @@ db.sessions.forEach(s => {
   s.c2 = Object.assign(blank(), s.c2 || {});
   s.abs = s.abs || [];
   s.hr = Object.assign({ avg: "", max: "", min: "", src: "" }, s.hr || {});
+  s.hrGaps = s.hrGaps || [];
   s.hrs = s.hrs || [];
   s.t1 = s.t1 || ""; s.t2 = s.t2 || "";
   s.st = s.st || {}; s.hr0 = s.hr0 || 0;
@@ -4450,7 +4669,8 @@ function exWindows(s){
   Object.keys(s.st || {}).forEach(k => {
     const w = s.st[k];
     if (!s.hr0 || !w) return;
-    const a = Math.round((w[0] - s.hr0)/1000), b = Math.round((w[1] - s.hr0)/1000);
+    /* +1 s : une mesure prise juste avant l'appui appartient encore à ce qui précède */
+    const a = Math.ceil((w[0] - s.hr0)/1000) + 1, b = Math.floor((w[1] - s.hr0)/1000);
     if (b >= 0) out.push({ k: k, n: exName(k), a: Math.max(0,a), b: Math.max(a+30,b) });
   });
   return out.sort((x,y) => x.a - y.a);
@@ -4458,7 +4678,29 @@ function exWindows(s){
 function hrIn(pts, a, b){
   const v = pts.filter(p => p[0] >= a && p[0] <= b).map(p => p[1]);
   if (!v.length) return null;
-  return { avg: Math.round(v.reduce((t,x)=>t+x,0)/v.length), max: Math.max.apply(null,v), n: v.length };
+  return { avg: Math.round(v.reduce((t,x)=>t+x,0)/v.length),
+           max: Math.max.apply(null,v), min: Math.min.apply(null,v), n: v.length };
+}
+/* courbe réduite d'une plage, avec sa propre échelle */
+function miniCurve(sub){
+  if (sub.length < 2) return "";
+  const bs = sub.map(p=>p[1]);
+  const lo = Math.min.apply(null,bs), hi = Math.max.apply(null,bs), sp = Math.max(hi-lo,6);
+  const W=300,H=66,T=6,B=6,PH=H-T-B;
+  const t0 = sub[0][0], dur = Math.max(sub[sub.length-1][0]-t0, 1);
+  const xy = sub.map(p => [((p[0]-t0)/dur*W), (T + PH - (p[1]-lo)/sp*PH)]);
+  const line = xy.map(p=>p[0].toFixed(1)+","+p[1].toFixed(1)).join(" ");
+  return '<svg class="mc" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none">'
+    + '<polygon points="0,'+H+' '+line+' '+W+','+H+'" fill="#FF7A0016"/>'
+    + '<polyline points="'+line+'" fill="none" stroke="#FF7A00" stroke-width="2" '
+    + 'stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>';
+}
+function chips(st, dur){
+  return '<div class="chips">'
+   + '<span class="cp"><b>'+st.avg+'</b>moyenne</span>'
+   + '<span class="cp hi"><b>'+st.max+'</b>maximum</span>'
+   + '<span class="cp lo"><b>'+st.min+'</b>minimum</span>'
+   + '<span class="cp"><b>'+Math.floor(dur/60)+"’"+String(dur%60).padStart(2,"0")+'</b>durée</span></div>';
 }
 const BANDC = ["#FF7A0022","#0A0A0A12","#FF7A0016","#0A0A0A18","#FF7A001E","#0A0A0A10"];
 
@@ -4569,16 +4811,40 @@ function anaCharts(){
 
   h += chart("Fréquence cardiaque — temps par intensité", zonesHTML(pts));
 
+  const gaps = s.hrGaps || [];
+  if (gaps.length) {
+    const tot = gaps.reduce((t,g) => t + (g[1]-g[0]), 0);
+    h += chart("Interruptions du capteur",
+      bars(gaps.map((g,i) => ({ n: "n°"+(i+1)+" à "+Math.round(g[0]/60)+" min",
+        v: Math.max(1, Math.round((g[1]-g[0])) ) })), " s"),
+      "<b>" + gaps.length + " coupure" + (gaps.length>1?"s":"") + "</b> totalisant "
+      + Math.round(tot) + " secondes sans mesure. La moyenne et le temps par intensité "
+      + "portent uniquement sur les périodes où le signal était reçu.");
+  }
+
   if (pts.length > 2 && wins.length) {
-    const rows = wins.map((w,i) => {
+    let cards = "", comp = [];
+    wins.forEach((w,i) => {
       const st = hrIn(pts, w.a, w.b);
-      return st ? { n:(i+1)+". "+w.n+" · pic "+st.max, v:st.avg } : null;
-    }).filter(Boolean);
-    h += chart("Fréquence cardiaque par exercice", rows.length?bars(rows," bpm"):"",
-      rows.length ? "Moyenne / maximum pendant chaque exercice. Les numéros correspondent aux plages colorées de la courbe." : "");
+      if (!st) return;
+      const sub = pts.filter(p => p[0] >= w.a && p[0] <= w.b);
+      const dur = Math.max(1, w.b - w.a);
+      comp.push({ n:(i+1)+". "+w.n, v:st.avg });
+      /* récupération : chute de fréquence dans la minute qui suit */
+      const after = hrIn(pts, w.b, w.b + 60);
+      const rec = after ? (st.max - after.min) : null;
+      cards += '<div class="exhr"><div class="exh">'+(i+1)+'. '+w.n+'</div>'
+        + chips(st, dur) + miniCurve(sub)
+        + (rec !== null && rec > 0
+            ? '<div class="cap2">Récupération : <b>−'+rec+' bpm</b> dans la minute qui suit.</div>' : '')
+        + '</div>';
+    });
+    if (cards) h += chart("Fréquence cardiaque par exercice", cards,
+      "Chaque plage est délimitée par tes marquages de début et de fin. "
+      + "Les numéros correspondent aux bandes colorées de la courbe générale.");
+    if (comp.length > 1) h += chart("Comparaison — moyenne par exercice", bars(comp," bpm"));
     const dl = wins.map((w,i)=>({ n:(i+1)+". "+w.n, v:Math.max(1,Math.round((w.b-w.a)/60)) }));
-    h += chart("Temps passé par exercice", bars(dl," min"),
-      "Mesuré entre ta première et ta dernière saisie sur chaque machine.");
+    h += chart("Temps passé par exercice", bars(dl," min"));
   }
 
   h += chart("Volume par exercice", ev.length?bars(ev," kg"):"" );
@@ -4643,7 +4909,59 @@ function analyse(live){
 }
 
 /* ── capteur de fréquence cardiaque ── */
-let hrDev = null, hrSum = 0, hrN = 0, hrMax = 0, hrMin = 0, hrT0 = 0, hrLast = -99;
+let hrDev = null, hrChar = null, hrSum = 0, hrN = 0, hrMax = 0, hrMin = 0, hrT0 = 0, hrLast = -99;
+let hrSeen = 0, hrWatchT = null, hrTries = 0, hrWake = null, hrLost = 0, hrAudio = null, hrAlive = false;
+
+function beep(freq, ms){
+  try {
+    hrAudio = hrAudio || new (window.AudioContext || window.webkitAudioContext)();
+    const o = hrAudio.createOscillator(), g = hrAudio.createGain();
+    o.frequency.value = freq; o.connect(g); g.connect(hrAudio.destination);
+    g.gain.setValueAtTime(0.25, hrAudio.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, hrAudio.currentTime + ms/1000);
+    o.start(); o.stop(hrAudio.currentTime + ms/1000);
+  } catch(e){}
+}
+async function wakeOn(){
+  try { if (navigator.wakeLock && !hrWake) {
+    hrWake = await navigator.wakeLock.request("screen");
+    hrWake.addEventListener("release", () => { hrWake = null; });
+  } } catch(e){}
+}
+function wakeOff(){ try { if (hrWake) { hrWake.release(); hrWake = null; } } catch(e){} }
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && hrDev && hrDev.gatt && hrDev.gatt.connected) wakeOn();
+});
+
+function hrMini(state, val){
+  const m = $("#hrMini"); if (!m) return;
+  m.className = "hrmini " + (state || "");
+  if (val !== undefined) $("#hrMiniV").textContent = val;
+}
+function hrDot(state, txt){
+  const el = $("#hrDot"); if (!el) return;
+  el.className = "hrdot " + state;
+  el.innerHTML = '<i></i>' + txt;
+}
+function hrWatchStart(){
+  clearInterval(hrWatchT);
+  hrWatchT = setInterval(() => {
+    if (!hrDev) return;
+    const age = hrSeen ? Math.round((Date.now() - hrSeen)/1000) : 999;
+      const on = hrAlive;
+    if (on && age < 8) { hrDot("ok", "Signal reçu · " + $("#hrLive").textContent + " bpm"); hrMini("ok"); }
+    else if (on) { hrDot("warn", "Aucun signal depuis " + age + " s — capteur mal placé ou hors de portée");
+                   hrMini("warn"); }
+    else { hrDot("bad", "Déconnecté — reconnexion automatique en cours…"); hrMini("bad"); }
+  }, 1000);
+}
+function markGap(open){
+  draft.hrGaps = draft.hrGaps || [];
+  if (!hrT0) return;
+  const t = Math.round((Date.now() - hrT0)/1000);
+  if (open) { hrLost = t; }
+  else if (hrLost) { draft.hrGaps.push([hrLost, t]); hrLost = 0; stash(); }
+}
 const HRSTEP = 5;   /* un point toutes les 5 secondes */
 function hrReset(){ hrSum = hrN = hrMax = hrMin = 0; hrT0 = 0; hrLast = -99; $("#hrLive").textContent = "—"; }
 
@@ -4706,68 +5024,112 @@ async function hrConnect(all){
         ? "<b>Aucun appareil sélectionné.</b> Soit tu as fermé la liste, soit le capteur n’apparaît pas : "
           + "vérifie qu’il est allumé (voyant clignotant) et qu’aucune autre application ne le retient."
         : "<b>Capteur introuvable avec le filtre standard.</b> Appuie sur "
-          + "<b>Voir tous les appareils</b> juste en dessous : certains navigateurs n’acceptent pas le filtrage.", true);
+          + "<b>Voir tous les appareils</b> juste en dessous.", true);
     } else if (n === "SecurityError") {
-      hrSay("<b>Refusé pour raison de sécurité.</b> La page doit être servie en <b>https</b>. "
-          + "Vérifie la ligne « Contexte sécurisé » dans l’onglet Diagnostic.", true);
+      hrSay("<b>Refusé pour raison de sécurité.</b> La page doit être servie en <b>https</b>.", true);
     } else if (n === "NotAllowedError") {
       hrSay("<b>Autorisation Bluetooth refusée.</b> Réglages → Bluefy → active Bluetooth, puis réessaie.", true);
     } else {
-      hrSay("<b>" + n + "</b> — " + (e && e.message ? e.message : "cause inconnue")
-          + ". Note ce message, il permet d’identifier le problème.", true);
+      hrSay("<b>" + n + "</b> — " + (e && e.message ? e.message : "cause inconnue"), true);
     }
     return;
   }
 
   hrDev = dev;
+  dev.addEventListener("gattserverdisconnected", () => {
+    hrAlive = false;
+    markGap(true); beep(320, 260);
+    hrMini("bad");
+    hrDot("bad", "Déconnecté — reconnexion automatique en cours…");
+    $("#hrBtn").textContent = "Reconnexion…";
+    hrRetry();
+  });
   try {
     hrSay("Appareil choisi : <b>" + (dev.name || "sans nom") + "</b>. Connexion en cours…");
-    dev.addEventListener("gattserverdisconnected", () => {
-      $("#hrBtn").textContent = "Connecter le capteur";
-      hrSay("Capteur déconnecté. Appuie pour reconnecter.", true);
-    });
-    const srv = await dev.gatt.connect();
-    const svc = await srv.getPrimaryService(HRS);
-    const ch = await svc.getCharacteristic(HRC);
-    await ch.startNotifications();
-    ch.addEventListener("characteristicvaluechanged", e => {
-      const bpm = hrParse(e.target.value);
-      if (!bpm) return;
-      hrSum += bpm; hrN++;
-      if (bpm > hrMax) hrMax = bpm;
-      if (!hrMin || bpm < hrMin) hrMin = bpm;
-      $("#hrLive").textContent = bpm;
-      const now = Date.now();
-      if (!hrT0) {
-        if (draft.hr0 && (draft.hrs || []).length) hrT0 = draft.hr0;
-        else { hrT0 = now; draft.hr0 = now; }
-      }
-      const t = Math.round((now - hrT0) / 1000);
-      if (t - hrLast >= HRSTEP) {
-        hrLast = t;
-        draft.hrs.push([t, bpm]); stash();
-        if (draft.hrs.length > 1500) draft.hrs.shift();
-        hrDraw();
-      }
-      draft.hr.avg = String(Math.round(hrSum / hrN));
-      draft.hr.max = String(hrMax); draft.hr.min = String(hrMin);
-      draft.hr.src = dev.name || "capteur BLE";
-      $("#hrAvg").value = draft.hr.avg; $("#hrMax").value = draft.hr.max;
-    });
+    await attach(dev);
+    hrWatchStart(); wakeOn(); beep(880, 140);
     $("#hrBtn").textContent = "Connecté — " + (dev.name || "capteur");
-    hrSay("<b>Capteur connecté.</b> La fréquence s’affiche en direct ; moyenne et maximum se remplissent seuls.");
+    hrSay("<b>Capteur connecté.</b> L’écran reste allumé pendant la séance et la liaison se rétablit "
+        + "d’elle-même en cas de coupure. Chaque interruption est signalée et notée.");
   } catch (e) {
     const n = e && e.name ? e.name : "Erreur";
-    if (n === "NotFoundError") {
+    if (n === "NotFoundError")
       hrSay("<b>Cet appareil ne publie pas de service de fréquence cardiaque.</b> "
-          + "Tu as peut-être choisi un autre appareil dans la liste. Réessaie et sélectionne <b>Polar Sense</b>.", true);
-    } else if (n === "NetworkError") {
-      hrSay("<b>Connexion interrompue.</b> Le capteur est probablement déjà relié à une autre application "
-          + "(Polar Flow, une montre). Ferme-la, éteins puis rallume le capteur, et réessaie.", true);
-    } else {
+          + "Réessaie et sélectionne <b>Polar Sense</b> dans la liste.", true);
+    else if (n === "NetworkError")
+      hrSay("<b>Connexion interrompue.</b> Le capteur est probablement déjà relié à une autre "
+          + "application ou à une montre. Ferme-la, éteins puis rallume le capteur.", true);
+    else
       hrSay("<b>" + n + "</b> — " + (e && e.message ? e.message : "cause inconnue"), true);
-    }
   }
+}
+
+async function attach(dev){
+  const srv = await dev.gatt.connect();
+  const svc = await srv.getPrimaryService(HRS);
+  hrChar = await svc.getCharacteristic(HRC);
+  await hrChar.startNotifications();
+  try { hrChar.removeEventListener("characteristicvaluechanged", onBeat); } catch(e){}
+  hrChar.addEventListener("characteristicvaluechanged", onBeat);
+  hrSeen = Date.now(); hrTries = 0; hrAlive = true;
+}
+
+function hrRetry(){
+  if (!hrDev) return;
+  hrTries++;
+  const wait = Math.min(1000 * hrTries, 8000);
+  setTimeout(async () => {
+    if (!hrDev || hrAlive) return;          /* on ne s'arrête que si l'abonnement est réellement rétabli */
+    const essais = hrTries;
+    try {
+      await attach(hrDev);
+      markGap(false); beep(880, 180); wakeOn();
+      $("#hrBtn").textContent = "Connecté — " + (hrDev.name || "capteur");
+      hrDot("ok", "Reconnecté");
+      hrSay("<b>Liaison rétablie</b> après " + essais + " tentative" + (essais > 1 ? "s" : "")
+          + ". L’interruption est notée dans la séance.");
+    } catch (e) {
+      if (hrTries < 40) hrRetry();
+      else hrSay("<b>Reconnexion abandonnée</b> après 40 tentatives. Vérifie le capteur, "
+               + "puis appuie sur <b>Connecter le capteur</b>.", true);
+    }
+  }, wait);
+}
+
+function onBeat(e){
+  const bpm = hrParse(e.target.value);
+  if (!bpm) return;
+  hrSeen = Date.now();
+  hrSum += bpm; hrN++;
+  if (bpm > hrMax) hrMax = bpm;
+  if (!hrMin || bpm < hrMin) hrMin = bpm;
+  $("#hrLive").textContent = bpm;
+  hrMini("ok", bpm);
+  const now = Date.now();
+  if (!hrT0) {
+    if (draft.hr0 && (draft.hrs || []).length) hrT0 = draft.hr0;
+    else { hrT0 = now; draft.hr0 = now; }
+  }
+  const t = Math.round((now - hrT0) / 1000);
+  if (t - hrLast >= HRSTEP) {
+    hrLast = t;
+    draft.hrs.push([t, bpm]);
+    if (draft.hrs.length > 1500) draft.hrs.shift();
+    hrDraw(); stash();
+  }
+  draft.hr.avg = String(Math.round(hrSum / hrN));
+  draft.hr.max = String(hrMax); draft.hr.min = String(hrMin);
+  draft.hr.src = (hrDev && hrDev.name) || "capteur BLE";
+  $("#hrAvg").value = draft.hr.avg; $("#hrMax").value = draft.hr.max;
+}
+
+function hrStop(){
+  clearInterval(hrWatchT); wakeOff();
+  try { if (hrDev && hrDev.gatt && hrDev.gatt.connected) hrDev.gatt.disconnect(); } catch(e){}
+  hrDev = null; hrChar = null; hrAlive = false;
+  hrDot("", "Capteur non connecté"); hrMini("", "—");
+  $("#hrBtn").textContent = "Connecter le capteur";
+  hrSay("Capteur libéré. L’écran peut de nouveau s’éteindre.");
 }
 
 /* ── bloc abdos & gainage ── */
@@ -4862,7 +5224,7 @@ function renderSets(i){
 
 /* ── saisie ── */
 function open_(id, existing){
-  stashNow();
+  runStop(); stashNow();
   const p = day(id);
   let resumed = false;
   if (!existing) {
@@ -4870,7 +5232,7 @@ function open_(id, existing){
     if (db.drafts && db.drafts[k]) { existing = db.drafts[k]; resumed = true; }
   }
   draft = existing || { id: "s" + Date.now(), date: today(), day: id, bw: "", note: "",
-    c1: blank(), c2: blank(), abs: [], hr: { avg: "", max: "", min: "", src: "" }, hrs: [], hr0: 0, st: {}, t1: hhmm(), t2: "", entries: p.ex.map(e => ({ k: e.k, sets: Array.from({length: e.sets}, () => ({ w: "", r: "", rir: "" })) })) };
+    c1: blank(), c2: blank(), abs: [], hr: { avg: "", max: "", min: "", src: "" }, hrs: [], hrGaps: [], hr0: 0, st: {}, t1: hhmm(), t2: "", entries: p.ex.map(e => ({ k: e.k, sets: Array.from({length: e.sets}, () => ({ w: "", r: "", rir: "" })) })) };
   $("#sTitle").textContent = p.plate + " · " + p.title;
   draft.c1 = Object.assign(blank(), draft.c1 || {});
   draft.c2 = Object.assign(blank(), draft.c2 || {});
@@ -4880,8 +5242,10 @@ function open_(id, existing){
   draft.abs = draft.abs || [];
   draft.hr = Object.assign({ avg: "", max: "", min: "", src: "" }, draft.hr || {});
   draft.hrs = draft.hrs || []; draft.st = draft.st || {}; draft.hr0 = draft.hr0 || 0;
+  draft.hrGaps = draft.hrGaps || [];
   $("#hrAvg").value = draft.hr.avg; $("#hrMax").value = draft.hr.max;
   hrReset(); hrDraw(); renderAbs();
+  runPaint();
   if (resumed) toast("Séance en cours reprise — rien n’a été perdu.");
   $("#c1").innerHTML = cardioCard(1, "Échauffement — début de séance", p.warmL, p.warmT, draft.c1, id);
   $("#c2").innerHTML = cardioCard(2, "Cardio — fin de séance", p.cardL, p.cardT, draft.c2, id);
@@ -4894,7 +5258,9 @@ function open_(id, existing){
       <div class="chead"><span class="tile">${THUMBS[e.k]}</span>
         <span><div class="t">${e.n}. ${e.t}${e.unil ? " (par jambe)" : ""}</div>
           <div class="g">${e.g} · objectif ${e.sets}×${e.reps}</div></span>
-        <button class="tmr" data-rest="${e.rest}">⏱ ${e.rest}s</button></div>
+        <span class="cbtns">
+          <button class="exbtn" data-exrun="${e.k}">▶ Démarrer</button>
+          <button class="tmr" data-rest="${e.rest}">⏱ ${e.rest}s</button></span></div>
       ${hint}<div class="rows" id="rows-${i}"></div>
       <div class="setctl"><button class="sbtn" data-minus="${i}">− série</button>
         <span class="cnt" id="cnt-${i}"></span>
@@ -4904,8 +5270,40 @@ function open_(id, existing){
   go("session");
 }
 
+let runKey = null, runT = null;
+function fmt(sec){ return Math.floor(sec/60) + ":" + String(sec%60).padStart(2,"0"); }
+function runPaint(){
+  document.querySelectorAll("[data-exrun]").forEach(b => {
+    const k = b.dataset.exrun, w = draft.st[k];
+    if (runKey === k) {
+      b.className = "exbtn on";
+      b.textContent = "■ " + fmt(Math.round((Date.now() - w[0])/1000));
+    } else if (w) {
+      b.className = "exbtn done";
+      b.textContent = "✓ " + fmt(Math.max(1, Math.round((w[1]-w[0])/1000)));
+    } else { b.className = "exbtn"; b.textContent = "▶ Démarrer"; }
+  });
+}
+function runStop(){
+  if (!runKey) return;
+  const w = draft.st[runKey];
+  if (w) w[1] = Date.now();
+  runKey = null; clearInterval(runT); runT = null;
+  stash(); runPaint();
+}
+function runStart(k){
+  if (runKey === k) { runStop(); toast("Exercice terminé."); return; }
+  runStop();
+  runKey = k;
+  draft.st[k] = [Date.now(), Date.now()];
+  if (!draft.hr0) { draft.hr0 = Date.now(); }
+  clearInterval(runT);
+  runT = setInterval(() => { if (runKey) { draft.st[runKey][1] = Date.now(); runPaint(); } }, 1000);
+  runPaint();
+  toast("Exercice démarré — appuie de nouveau pour l’arrêter.");
+}
 function stampEx(k){
-  if (!k) return;
+  if (!k || runKey) return;                    /* un chronométrage manuel est prioritaire */
   const now = Date.now();
   const cur = draft.st[k];
   draft.st[k] = cur ? [cur[0], now] : [now, now];
@@ -4964,6 +5362,7 @@ $("#abs").addEventListener("click", e => {
 if (navigator.bluetooth) {
   $("#hrBtn").addEventListener("click", () => hrConnect(false));
   $("#hrAll").addEventListener("click", () => hrConnect(true));
+  $("#hrOff").addEventListener("click", hrStop);
 }
 else { $("#hrBle").innerHTML = `<div class="hrnote"><b>Lecture directe impossible dans Safari.</b>
   Apple n’implémente pas le Bluetooth web : aucune page ne peut lire ton capteur ici.
@@ -4980,6 +5379,8 @@ else { $("#hrBle").innerHTML = `<div class="hrnote"><b>Lecture directe impossibl
 
 /* ── chronomètre de repos ── */
 $("#ex").addEventListener("click", e => {
+  const r = e.target.closest("[data-exrun]");
+  if (r) { runStart(r.dataset.exrun); return; }
   const b = e.target.closest("[data-rest]");
   if (b) { const c = b.closest(".card"); if (c) stampEx(c.dataset.exk);
     start(parseInt(b.dataset.rest)); return; }
@@ -5024,6 +5425,7 @@ $("#saveS").addEventListener("click", () => {
            || (draft.abs || []).some(a => a.sets.some(t => t.sec || t.r))
            || (draft.hrs || []).length || draft.hr.avg;
   if (!has) { toast("Saisis au moins une série, un cardio, des abdos ou une mesure cardiaque."); return; }
+  runStop();
   if (!draft.t2) { draft.t2 = hhmm(); $("#sT2").value = draft.t2; durShow(); }
   const i = db.sessions.findIndex(s => s.id === draft.id);
   if (i >= 0) db.sessions[i] = draft; else db.sessions.push(draft);
@@ -5086,7 +5488,7 @@ function csvText(){
       L.push([s.date, s.t1, s.t2, (durMin(s)===null?"":durMin(s)), nm, "cardio fin", "Cardio", c2.mach, "", "", "", "", "",
               "", c2.min, c2.niv, c2.prog, c2.km, c2.kcal, c2.fc, s.bw, c2.note, (s.hr||{}).avg, (s.hr||{}).max, (s.hr||{}).min].map(q).join(";"));
   });
-  return "\ufeff" + L.join("\n");
+  return String.fromCharCode(0xFEFF) + L.join("\n");
 }
 $("#csv").addEventListener("click", () => {
   dl("entrainements.csv", csvText(), "text/csv");
@@ -5128,7 +5530,7 @@ function hrCsvText(){
   db.sessions.forEach(s => { const d = day(s.day), nm = d ? d.plate + " " + d.title : s.day;
     (s.hrs || []).forEach(p =>
       L.push([s.date, nm, p[0], (p[0]/60).toFixed(2), p[1]].map(q).join(";"))); });
-  return "\ufeff" + L.join("\n");
+  return String.fromCharCode(0xFEFF) + L.join("\n");
 }
 $("#hrcsv").addEventListener("click", () => {
   const n = db.sessions.reduce((t,s) => t + ((s.hrs||[]).length), 0);
