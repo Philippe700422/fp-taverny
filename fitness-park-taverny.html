@@ -362,6 +362,33 @@ svg .lead{stroke:#C9CDD2;stroke-width:1.2;fill:none}
 .progbar select{min-height:40px;border:1px solid var(--hair);border-radius:3px;padding:0 8px;
                 font-size:14px;background:var(--paper);color:var(--ink);width:100%}
 .progbar .btn{min-height:40px;padding:0 14px;font-size:12px}
+.runbar{display:grid;grid-template-columns:1fr auto;gap:8px;padding:0 12px 10px}
+.runb{border:2px solid var(--black);border-radius:4px;background:var(--paper);min-height:48px;
+      font-size:14px;font-weight:600;letter-spacing:.04em;color:var(--black);cursor:pointer;
+      display:flex;align-items:center;justify-content:center;gap:6px}
+.runb:active{background:var(--yellow)}
+.runb.on{background:var(--orange);border-color:var(--orange);color:#fff;
+         font-family:"IBM Plex Mono",monospace;font-size:15px;
+         animation:runpulse 2s ease-in-out infinite}
+.runb.done{background:var(--wash);border-color:var(--hair);color:var(--muted);font-weight:500;min-height:40px}
+@keyframes runpulse{0%,100%{opacity:1}50%{opacity:.82}}
+.runinfo{display:none}
+.runinfo.on{display:block;margin:0 12px 10px;padding:8px 11px;background:#EDF7F0;
+            border-left:4px solid #1E7A3C;border-radius:0 3px 3px 0;
+            font-size:12px;line-height:1.4;color:#1E5B31}
+.runinfo.on b{font-family:"IBM Plex Mono",monospace;font-size:14px;color:#1E7A3C}
+.donebtn{border:1px solid var(--hair);border-radius:20px;background:var(--paper);padding:6px 14px;
+         font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+         cursor:pointer;justify-self:start;grid-column:2}
+.donebtn:active{background:var(--yellow-soft)}
+.donebtn.on{background:#EDF7F0;border-color:#1E7A3C;color:#1E7A3C}
+.card.fini{border-left:5px solid #1E7A3C}
+.card.fini .chead .t{text-decoration:line-through;text-decoration-color:#1E7A3C99}
+.card.fini .tile{opacity:.55}
+.dcnt{display:flex;align-items:center;padding:6px 11px;border-radius:20px;background:#ffffff1a;
+      border:1px solid #ffffff33;font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;
+      color:#fff;white-space:nowrap}
+.dcnt.full{background:#1E7A3C;border-color:#1E7A3C}
 .absb{grid-column:1 / -1;background:#FFECE3;border-left:4px solid #D9480F;border-radius:0 3px 3px 0;
       padding:7px 10px;font-size:12.5px;font-weight:600;color:#A33B0B;margin-top:8px;display:block}
 .tile.fichebtn{position:relative;cursor:pointer;border:1px solid var(--hair);border-radius:4px;overflow:hidden}
@@ -2988,6 +3015,7 @@ textarea.mfi{min-height:84px;line-height:1.45;resize:vertical}
         <button class="btn" id="delS">Supprimer cette séance</button>
       </div>
       <div class="tbar" id="tbar">
+        <span class="dcnt" id="doneCnt">0 / 6</span>
         <span class="hrmini" id="hrMini"><i></i><b id="hrMiniV">—</b><span>bpm</span></span>
         <span class="cd" id="cd">0:00</span><span class="lb">repos</span>
         <button id="tstop">Démarrer / arrêter</button></div>
@@ -5673,7 +5701,8 @@ function exWindows(s){
     if (!s.hr0 || !w) return;
     /* +1 s : une mesure prise juste avant l'appui appartient encore à ce qui précède */
     const a = Math.ceil((w[0] - s.hr0)/1000) + 1, b = Math.floor((w[1] - s.hr0)/1000);
-    if (b >= 0) out.push({ k: k, n: blocNom(s, k), a: Math.max(0,a), b: Math.max(a+30,b) });
+    if (b >= 0) out.push({ k: k, n: blocNom(s, k), a: Math.max(0,a), b: Math.max(a+30,b),
+                           reel: Math.max(1, Math.round((w[1] - w[0]) / 1000)) });
   });
   return out.sort((x,y) => x.a - y.a);
 }
@@ -5830,7 +5859,7 @@ function anaCharts(){
       const st = hrIn(pts, w.a, w.b);
       if (!st) return;
       const sub = pts.filter(p => p[0] >= w.a && p[0] <= w.b);
-      const dur = Math.max(1, w.b - w.a);
+      const dur = w.reel || Math.max(1, w.b - w.a);
       comp.push({ n:(i+1)+". "+w.n, v:st.avg });
       /* récupération : chute de fréquence dans la minute qui suit */
       const after = hrIn(pts, w.b, w.b + 60);
@@ -5846,7 +5875,7 @@ function anaCharts(){
       "Chaque plage est délimitée par tes marquages de début et de fin. "
       + "Les numéros correspondent aux bandes colorées de la courbe générale.");
     if (comp.length > 1) h += chart("Comparaison — moyenne par exercice", bars(comp," bpm"));
-    const dl = wins.map((w,i)=>({ n:(i+1)+". "+w.n, v:Math.max(1,Math.round((w.b-w.a)/60)) }));
+    const dl = wins.map((w,i)=>({ n:(i+1)+". "+w.n, v:Math.max(1,Math.round((w.reel || (w.b-w.a))/60)) }));
     h += chart("Temps passé par exercice", bars(dl," min"));
   }
 
@@ -6274,7 +6303,6 @@ function open_(id, existing){
   draft.hrGaps = draft.hrGaps || [];
   $("#hrAvg").value = draft.hr.avg; $("#hrMax").value = draft.hr.max;
   hrReset(); hrDraw(); renderAbs();
-  runPaint();
   if (resumed) toast("Séance en cours reprise — rien n’a été perdu.");
   $("#c1").innerHTML = cardioCard(1, "Échauffement — début de séance", p.warmL, p.warmT, draft.c1, id);
   $("#c2").innerHTML = cardioCard(2, "Cardio — fin de séance", p.cardL, p.cardT, draft.c2, id);
@@ -6288,16 +6316,19 @@ function open_(id, existing){
         aria-label="Ouvrir la fiche de la machine">${THUMBS[e.k]}<span class="fl2">fiche</span></span>
         <span><div class="t">${e.n}. ${e.t}${e.unil ? " (par jambe)" : ""}</div>
           <div class="g">${e.g} · objectif ${e.sets}×${e.reps}</div></span>
+        <button class="donebtn" data-done="${e.k}">Fait</button>
         ${absBadge(e.k)}
-        <span class="cbtns">
-          <button class="exbtn" data-exrun="${e.k}" data-mode="1">▶ Démarrer</button>
-          <button class="exbtn stop" data-exrun="${e.k}" data-mode="0" disabled>— Terminer</button>
-          <button class="tmr" data-rest="${e.rest}">⏱ ${e.rest}s</button></span></div>
+        </div>
+      <div class="runbar">
+        <button class="runb" data-exrun="${e.k}">▶ Démarrer l’exercice</button>
+        <button class="tmr" data-rest="${e.rest}">⏱ ${e.rest}s</button></div>
+      <div class="runinfo" data-runinfo="${e.k}"></div>
       ${hint}<div class="rows" id="rows-${i}"></div>
       <div class="setctl"><button class="sbtn" data-minus="${i}">− série</button>
         <span class="cnt" id="cnt-${i}"></span>
         <button class="sbtn" data-plus="${i}">+ série</button></div></div>`;
   }).join("");
+  runPaint(); donePaint();
   p.ex.forEach((_, i) => renderSets(i));
   go("session");
 }
@@ -6305,28 +6336,34 @@ function open_(id, existing){
 let runKey = null, runT = null;
 const restStart = {};   /* départ du chronomètre de repos, par exercice */
 function fmt(sec){ return Math.floor(sec/60) + ":" + String(sec%60).padStart(2,"0"); }
+function hm(ms){ const d = new Date(ms);
+  return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0"); }
 function runPaint(){
   document.querySelectorAll("[data-exrun]").forEach(b => {
-    const k = b.dataset.exrun, w = draft.st[k], go = b.dataset.mode === "1";
-    const encours = runKey === k;
-    if (go) {
-      b.className = "exbtn" + (encours ? " on" : w ? " done" : "");
-      b.textContent = encours ? "● " + fmt(Math.round((Date.now() - w[0])/1000))
-                    : w ? "↻ Reprendre" : "▶ Démarrer";
-    } else {
-      b.className = "exbtn stop" + (encours ? " arm" : "");
-      b.disabled = !encours;
-      b.textContent = encours ? "■ Terminer"
-                    : w ? "✓ " + fmt(Math.max(1, Math.round((w[1]-w[0])/1000))) : "— Terminer";
-    }
+    const k = b.dataset.exrun, w = draft.st[k], encours = runKey === k;
+    const fini = !!(w && w[2]);
+    b.className = "runb" + (encours ? " on" : fini ? " done" : "");
+    b.textContent = encours ? "■ Arrêter l’exercice — " + fmt(Math.round((Date.now() - w[0])/1000))
+                  : fini   ? "↻ Reprendre l’exercice"
+                           : "▶ Démarrer l’exercice";
+  });
+  document.querySelectorAll("[data-runinfo]").forEach(el => {
+    const w = draft.st[el.dataset.runinfo];
+    if (!w || !w[2]) { el.textContent = ""; el.className = "runinfo"; return; }
+    el.className = "runinfo on";
+    el.innerHTML = "✓ <b>" + fmt(Math.max(1, Math.round((w[1]-w[0])/1000))) + "</b>"
+                 + " &nbsp;·&nbsp; " + hm(w[0]) + " → " + hm(w[1])
+                 + " &nbsp;·&nbsp; fenêtre de mesure cardiaque";
   });
 }
 function runStop(){
   if (!runKey) return;
-  const w = draft.st[runKey];
+  const w = draft.st[runKey], k = runKey;
   if (w) { w[1] = Date.now(); w[2] = 1; }
   runKey = null; clearInterval(runT); runT = null;
-  stash(); runPaint();
+  const e = entryOf(k);
+  if (e && !e.dm) e.done = 1;          /* arrêter, c'est avoir fini */
+  stash(); runPaint(); donePaint();
 }
 function runStart(k){
   runStop();
@@ -6336,12 +6373,45 @@ function runStart(k){
   clearInterval(runT);
   runT = setInterval(() => { if (runKey) { draft.st[runKey][1] = Date.now(); runPaint(); } }, 1000);
   runPaint();
-  toast("Exercice démarré — appuie de nouveau pour l’arrêter.");
 }
 window.__redrawEx = function(){
   const v = document.getElementById("v-session");
   if (draft && v && v.classList.contains("on")) open_(draft.day, draft);
 };
+function entryOf(k){ return (draft.entries || []).find(e => e.k === k); }
+function pleine(e){
+  const n = (e.sets || []).length;
+  return n > 0 && e.sets.every(x => x.w !== "" && x.r !== "");
+}
+function donePaint(){
+  let n = 0;
+  document.querySelectorAll("[data-done]").forEach(b => {
+    const e = entryOf(b.dataset.done); if (!e) return;
+    const f = !!e.done;
+    if (f) n++;
+    b.className = "donebtn" + (f ? " on" : "");
+    b.textContent = f ? "✓ Fait" : "Fait";
+    const c = b.closest(".card"); if (c) c.classList.toggle("fini", f);
+  });
+  const tot = (draft.entries || []).length;
+  const el = $("#doneCnt");
+  if (el) { el.textContent = n + " / " + tot;
+    el.className = "dcnt" + (tot && n === tot ? " full" : ""); }
+  return n;
+}
+function doneToggle(k){
+  const e = entryOf(k); if (!e) return;
+  e.done = e.done ? 0 : 1;
+  e.dm = 1;                       /* décision manuelle : l'automatisme ne repassera plus dessus */
+  if (e.done && runKey === k) runStop();
+  stash(); donePaint();
+  toast(e.done ? "Exercice marqué comme fait." : "Marque retirée.");
+}
+function doneAuto(k){
+  const e = entryOf(k); if (!e || e.dm) return;
+  const f = pleine(e) ? 1 : 0;
+  if (e.done !== f) { e.done = f; donePaint(); }
+}
 function absBadge(k){
   const a = window.__machStatut && window.__machStatut(k);
   if (!a) return "";
@@ -6366,6 +6436,7 @@ $("#ex").addEventListener("input", e => {
     if (restStart[k]) { set.rp = Math.round((set.t - restStart[k]) / 1000); delete restStart[k]; }
   }
   stampEx(draft.entries[i].k);
+  doneAuto(draft.entries[i].k);
 });
 ["sDate","sBw","sNote","sT1","sT2"].forEach(id => $("#" + id).addEventListener("input", e => {
   draft[{sDate:"date",sBw:"bw",sNote:"note",sT1:"t1",sT2:"t2"}[id]] = e.target.value;
@@ -6433,6 +6504,8 @@ else { $("#hrBle").innerHTML = `<div class="hrnote"><b>Lecture directe impossibl
 
 /* ── chronomètre de repos ── */
 $("#ex").addEventListener("click", e => {
+  const dn = e.target.closest("[data-done]");
+  if (dn) { e.preventDefault(); e.stopPropagation(); doneToggle(dn.dataset.done); return; }
   const f = e.target.closest("[data-fiche]");
   if (f) {
     const k = f.dataset.fiche;
@@ -6479,8 +6552,9 @@ $("#v-session").addEventListener("click", e => {
   const r = e.target.closest("[data-exrun]");
   if (!r) return;
   e.preventDefault();
-  if (r.dataset.mode === "1") { runStart(r.dataset.exrun); toast("C’est parti — appuie sur Terminer en partant."); }
-  else if (runKey === r.dataset.exrun) { runStop(); toast("Bloc terminé, durée enregistrée."); }
+  const k = r.dataset.exrun;
+  if (runKey === k) { runStop(); toast("Exercice arrêté, durée enregistrée."); }
+  else { runStart(k); toast("C’est parti — appuie sur Arrêter en quittant la machine."); }
 });
 ["input","change"].forEach(t => $("#v-session").addEventListener(t, stash));
 $("#v-session").addEventListener("click", e => {
