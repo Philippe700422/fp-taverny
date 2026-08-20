@@ -4806,6 +4806,25 @@ function fillFiches(){
   $$("[data-ms]").forEach(el => { el.innerHTML = vueSeance(el.dataset.ms); });
 }
 window.__fillMach = fillFiches;
+
+/* fiches établies à partir des relevés en salle : posées une seule fois,
+   jamais par-dessus une saisie existante. */
+(function amorce(){
+  try {
+    const pre = {"leg-press": {"statut": "présente", "emplacement": "Zone jambes, contre le mur, face à la zone cross-training", "repere": "Grande plaque noire LEG PRESS sur le montant, pile de poids à droite, plateau de pieds sur rails chromés", "reglage1": "Dossier : échelle numérotée de 1 à 7", "mon_reglage": "", "reglage2": "Pieds hauts et larges sur le plateau, pointes légèrement ouvertes, plante entière en contact", "limite": "Genou à 90° maximum — jamais plus profond", "execution": "Régler le dossier, s'asseoir, dos et bassin plaqués\nDéverrouiller le chariot avec le levier jaune\nPousser par toute la plante du pied\nNe pas verrouiller les genoux en haut\nRedescendre en contrôlant, arrêt à 90°\nReverrouiller le chariot en fin de série", "erreurs": "Descendre trop bas — c'est là que le genou souffre\nDécoller les talons ou le bassin du dossier\nLaisser les genoux rentrer vers l'intérieur\nVerrouiller les genoux en fin de poussée", "alternative": "Presse horizontale, ou fentes marchées avec haltères légers", "type_charge": "Pile de poids sélectorisée, goupille", "increment": "", "charge_min": "", "charge_max": "190 kg (250 kg en version Plus)", "mus_p": "Quadriceps, Fessiers, Ischio-jambiers", "mus_s": "Mollets", "marque": "Technogym", "gamme": "Selection", "modele": "Selection Leg Press", "qr_url": "http://s.technogym.com/sel/leg_press", "ref": "0E001997AB", "dimensions": "≈ 207 × 121 × 181 cm", "masse": "581 kg", "conception": "Came REV logée dans le plateau de pieds : résistance plus légère en flexion, plus lourde en extension\nAngle du dossier reproduisant la position du squat, pour limiter la charge sur la colonne\nAngle plateau/rails calculé pour engager les extenseurs de hanche — d'où le rouge vif sur les fessiers", "limites": "Poids utilisateur maximal non publié par Technogym", "notes": "Gamme Selection confirmée par le QR (sel/leg_press). Relever les graduations de la pile."}, "seated-leg-curl": {"statut": "présente", "emplacement": "Zone musculation, rangée centrale, à proximité du tirage", "repere": "Plaque noire LEG CURL, rouleau de cheville à l'avant, cale-cuisses jaune au-dessus des genoux", "reglage1": "Dossier réglable d'avant en arrière", "mon_reglage": "", "reglage2": "Rouleau juste au-dessus des talons, cale-cuisses serré près des genoux", "limite": "Rouleau jamais sur le tendon d'Achille", "execution": "Régler le dossier, s'asseoir, dos plaqué\nPlacer le rouleau juste au-dessus des talons\nSerrer le cale-cuisses jusqu'à un maintien ferme\nRégler l'amplitude de départ avec la molette jaune\nFléchir en ramenant les talons sous le siège\nRemonter lentement, sans laisser la charge tirer", "erreurs": "Laisser le bassin décoller — la charge est alors trop lourde\nPlacer le rouleau sur le tendon d'Achille\nRemonter en relâchant d'un coup\nPartir d'une amplitude qui tire derrière le genou", "alternative": "Leg curl allongé, ou soulevé de terre jambes tendues aux haltères", "type_charge": "Pile de poids sélectorisée, goupille", "increment": "", "charge_min": "", "charge_max": "", "mus_p": "Ischio-jambiers", "mus_s": "", "marque": "Technogym", "gamme": "Selection", "modele": "Selection Leg Curl", "qr_url": "http://s.technogym.com/sel/leg_curl", "ref": "0E001996AB", "dimensions": "", "masse": "", "conception": "Quatre réglages signalés sur la plaque : dossier, cale-cuisses, rouleau de cheville, amplitude de départ\nExercice d'isolation : la plaque ne signale aucun groupe secondaire", "limites": "", "notes": "Gamme Selection confirmée par le QR (sel/leg_curl). Fiche produit officielle non consultée. Relever les graduations de la pile : sur un exercice d'isolation, l'incrément compte double."}};
+    const d = all(); let n = 0;
+    Object.keys(pre).forEach(k => {
+      const cur = d[k];
+      const vide = !cur || Object.keys(cur).filter(x => x !== "maj").length === 0;
+      if (vide) { d[k] = Object.assign({}, pre[k], { maj: "20/08/2026" }); n++; }
+    });
+    if (n) {
+      window.__vault.set(KEY, JSON.stringify(d));
+      try { window.dispatchEvent(new CustomEvent("fp-save")); } catch(e){}
+      setTimeout(fillFiches, 500);
+    }
+  } catch(e){}
+})();
 window.__machStatut = function(k){
   const d = get(k);
   if (!d.statut || d.statut === "présente") return null;
